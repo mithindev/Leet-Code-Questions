@@ -3,21 +3,43 @@ import java.util.Arrays;
 
 public class Practice1 {
     public static void main(String[] args) {
-        int[] arr = {2, 2, 3, 1};
-        boolean dup = false;
-        int[] ans = RmDuplicates(arr);
-        sort(ans);
-        System.out.println(Arrays.toString(ans));
+        int[] arr = {2, 2, 2, 3, 1};
+        int[] arr3 = arr;
+//        int dup = arr.length - unique(arr);
+//        int[] ans = RmDuplicates(arr);
+//        sort(ans);
+//        System.out.println(Arrays.toString(ans));
+//        System.out.println(ans.length);
+//
+//        if (dup == 0){
+//            if (ans.length == 2 || ans.length == 1) {
+//                System.out.println(ans[ans.length-1]);
+//
+//            } else {
+//                System.out.println(ans[ans.length-3-dup]);
+//
+//            }
+//        } else {
+//            System.out.println(ans[ans.length-dup]);
+//
+//        }
+        System.out.println(Arrays.toString(arr));
 
-        System.out.println(ans.length);
+        int ans = RemoveDup(arr);
+        System.out.println(ans);
 
-        if (ans.length == 2 || ans.length == 1) {
-            System.out.println(ans[ans.length-1]);
+        int[] arr2 = Arrays.copyOfRange(arr,0,ans) ;
+        System.out.println(Arrays.toString(arr2));
+        sort(arr2);
+        System.out.println(Arrays.toString(arr2));
 
-        } else {
-            System.out.println(ans[ans.length-3]);
-
+        for (int i = arr2.length-3; i >= 0; i++) {
+            if (count(arr3, arr2[i]) == 1) {
+                System.out.println(arr2[i]);
+            }
         }
+
+
 
     }
     static void sort(int[] arr) {
@@ -91,5 +113,40 @@ public class Practice1 {
             }
         }
         return count;
+    }
+
+    static int RemoveDup (int[] arr) {
+//        int len = arr.length;
+//        for (int i = 0; i < len; i++) {
+//            for (int j = i+1; j < len; j++) {
+//                if (arr[i] == arr[j]) {
+//                    for (int l = j; l < len; l++) {
+//                        arr[j] = arr[j+1];
+//                        len = len-1;
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//        return arr;
+        if (arr.length == 0 || arr.length == 1) {
+            return arr.length;
+        }
+        int[] temp = new int[arr.length];
+        int j = 0;
+        for (int i = 0; i < arr.length-1; i++) {
+            if (arr[i] != arr[i+1]) {
+                temp[j] = arr[i];
+                j++;
+            }
+
+        }
+        temp[j++] = arr[arr.length-1];
+
+        for (int i = 0; i < j; i++) {
+            arr[i] = temp[i];
+        }
+        return j;
     }
 }

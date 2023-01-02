@@ -3,6 +3,21 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        int[] Qn = {2, 2, 2, 3, 1};
+        int[] arr = Arrays.copyOfRange(Qn,0,Qn.length);
+        System.out.println(Arrays.toString(Qn));
+        int ans = RemoveDup(Qn);
+        int[] arr1 = Arrays.copyOfRange(arr,0,ans) ;
+        System.out.println(Arrays.toString(arr1));
+        sort(arr1);
+//        System.out.println(Arrays.toString(arr1));
+        System.out.println(Arrays.toString(arr));
+
+//        for (int i = 0; i < arr1.length; i++) {
+//            if (count(Qn, ))
+//        }
+
+
 
     }
     static int RemoveDup (int[] arr) {

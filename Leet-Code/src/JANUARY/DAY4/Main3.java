@@ -3,17 +3,16 @@ import java.util.Arrays;
 
 public class Main3 {
     public static void main(String[] args) {
-        int[] nums1 = {0, 0, -1, 0, 0};
-        int[] nums2 = {-1, 0, 0, 0, 0, 0, 1};
+        int[] nums1 = {};
+        int[] nums2 = {2, 3};
 
         int[] arr = merge(nums1, nums2);
         sort(arr);
         System.out.println(Arrays.toString(arr));
-        int mid = arr.length/2-1;
-        System.out.println(mid);
-        double avg = 0;
+
 
         if (arr.length%2 == 0) {
+            int mid = arr.length/2-1;
             if (arr.length == 2) {
                 double ans = (arr[0]+arr[1])/2;
                 System.out.println(ans);
@@ -22,6 +21,7 @@ public class Main3 {
                 System.out.println(ans);
             }
         } else{
+            int mid = arr.length/2;
             if (arr.length == 1) {
                 double ans = arr[0];
                 System.out.println(ans);

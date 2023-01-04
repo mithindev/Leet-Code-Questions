@@ -3,12 +3,18 @@ import java.util.Arrays;
 
 public class Main3 {
     public static void main(String[] args) {
-        int[] arr1 = {3, 2, 1};
-        sort(arr1);
-        int[] arr2 = {6, 5, 4};
-        sort(arr2);
+        int[] arr1 = {0, 0, -1, 0, 0};
+//        sort(arr1);
+        int[] arr2 = {-1, 0, 0, 0, 0, 0, 1};
+//        sort(arr2);
         int[] ans = merge(arr1, arr2);
+        sort(ans);
         System.out.println(Arrays.toString(ans));
+        int mid = ans.length/2;
+        System.out.println(mid);
+        double avg = (ans[mid-1] + ans[mid])/2;
+        System.out.println(avg);
+
 
     }
     static void sort(int[] arr) {

@@ -11,7 +11,7 @@ public class BinSearch {
     static int BS (int arr[], int target) {
         int s = 0;
         int e = arr.length - 1;
-        
+
 
         while (s <= e) {
             int m = s + (e - s) / 2;

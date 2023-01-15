@@ -3,7 +3,11 @@ package JANUARY.DAY14;
 import java.util.ArrayList;
 public class SubSeq {
     public static void main(String[] args) {
-        SubSeq("", "abc");
+//        SubSeq("", "abc");
+        ArrayList<String> list = SubSeqAscii("","abc");
+        for (String i : list) {
+            System.out.println(i);
+        }
     }
     // a function to print all the subseq of a string;
     static void SubSeq(String p, String up) {
@@ -38,7 +42,7 @@ public class SubSeq {
 
         char ch = up.charAt(0);
         ArrayList<String> first = SubSeqAscii(p, up.substring(1));
-        ArrayList<String> second = SubSeqAscii(p + 0,up.substring(1));
+        ArrayList<String> second = SubSeqAscii(p + (ch + 0),up.substring(1));
         ArrayList<String> third = SubSeqAscii (p + ch, up.substring(1));
 
         first.addAll(second);

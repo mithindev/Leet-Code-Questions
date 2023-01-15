@@ -10,6 +10,7 @@ public class SubSet {
     }
 
     static List<List<Integer>> SubSet (int[] arr) {
+        Arrays.sort(arr);
         List<List<Integer>> outer = new ArrayList<>();
         outer.add(new ArrayList<>());
 
@@ -40,6 +41,7 @@ public class SubSet {
             int n = outer.size();
             for (int j = start; j < n; j++) {
                 List<Integer> internal = new ArrayList<>(outer.get(i));
+                internal.add(arr[i]);
                 outer.add(internal);
             }
         }

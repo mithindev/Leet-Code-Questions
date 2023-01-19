@@ -1,7 +1,7 @@
-package JANUARY.DAY19;
+package JANUARY.DAY20;
 
 public class Main {
     public static void main(String[] args) {
-
+        
     }
 }

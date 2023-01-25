@@ -6,11 +6,8 @@ public class PascalTriangle {
     public static void main(String[] args) {
 //        System.out.println(power(2,3));
         int n = 3;
-        List<Integer> list = new ArrayList<>(n+1);
-        for (int i = 0; i <= n; i++) {
-            int temp = fact(n)/(fact(n-i)*fact(i));
-            list.add(temp);
-        }
+        List<Integer> list = getRow(3);
+
         for (int i : list) {
             System.out.println(i);
         }
@@ -30,5 +27,18 @@ public class PascalTriangle {
         } else {
             return x*power(x,y-1);
         }
+    }
+
+    static List<Integer> getRow(int rowIndex) {
+        List<Integer> result = new ArrayList<Integer>();
+        for (int i = 0;i < rowIndex + 1; i ++) {
+            result.add(1);
+            for (int j = i; j >=0; j --) {
+                if (j != 0 && j != i) {
+                    result.set(j, result.get(j) + result.get(j-1));
+                }
+            }
+        }
+        return result;
     }
 }

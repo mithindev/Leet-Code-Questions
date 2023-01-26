@@ -10,4 +10,32 @@ public class SubSets {
 
     }
 
+    static List<List<Integer>> perms (int[] arr) {
+        List<Integer> p = new ArrayList<>();
+        List<Integer> up = new ArrayList<>();
+
+        for (int i : arr) {
+            up.add(i);
+        }
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        if (up.size() == 0) {
+            ans.add(p);
+        }
+
+        int num = up.get(0);
+
+        for (int i = 0;i <= up.size(); i++) {
+            List<Integer> f = p.
+        }
+
+
+
+
+
+
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package JANUARY.DAY29;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EliminationGame {
@@ -40,7 +41,7 @@ public class EliminationGame {
                     ans.add(list.get(i));
                 }
                 list = ans;
-                reverse(list);
+                Collections.reverse(list);
                 alt++;
                 for (int i : list) {
                     System.out.printf("%d, ",i);

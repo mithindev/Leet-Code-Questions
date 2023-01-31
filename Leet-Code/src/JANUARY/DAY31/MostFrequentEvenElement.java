@@ -8,9 +8,11 @@ public class MostFrequentEvenElement {
     public static void main(String[] args) {
         int[] arr = {0, 1, 2, 0, 0, 0, 2, 4, 4, 1};
         Arrays.sort(arr);
+        int countans = 0;
         int ans = -1;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] % 2 == 0 && count(arr, arr[i]) > ans) {
+            if (arr[i] % 2 == 0 && count(arr, arr[i]) > countans) {
+                countans = count(arr, arr[i]);
                 ans = arr[i];
             }
         }

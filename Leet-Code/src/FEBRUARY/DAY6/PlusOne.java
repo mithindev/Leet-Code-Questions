@@ -31,19 +31,26 @@ public class PlusOne {
         return cnt;
     }
 
-    static void reverse (int[] arr) {
-        for (int i = 0; i < arr.length/2; i++) {
-            int temp = arr[i];
-            arr[i] = arr[arr.length-i-1];
-            arr[arr.length-i-1] = temp;
+    static int reverse (int num) {
+        int ans = 0;
+        int len = count(num)-1;
+        int i = 0;
+        while (num > 0) {
+            int temp = num%10;
+            ans += temp * Math.pow(10,len-i);
+            i++;
+            num = num/10;
         }
+        return ans;
     }
 
     static int[] numToArray (int num) {
+        int n = reverse(num);
         int[] arr = new int[count(num)];
 
         for (int i = 0; i < arr.length; i++) {
-
+            arr[i] = n%10;
+            n = n/10;
         }
         return arr;
     }

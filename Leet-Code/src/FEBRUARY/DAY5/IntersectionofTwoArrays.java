@@ -14,7 +14,7 @@ public class IntersectionofTwoArrays {
         return false;
     }
 
-    static int[] intersectionNum(int[] arr1, int[] arr2) {
-
-    }
+//    static int[] intersectionNum(int[] arr1, int[] arr2) {
+//
+//    }
 }

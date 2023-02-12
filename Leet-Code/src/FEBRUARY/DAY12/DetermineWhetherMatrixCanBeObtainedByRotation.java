@@ -1,29 +1,29 @@
 package FEBRUARY.DAY12;
 
-import java.util.Arrays;
-
-public class RotateMatrixBy90 {
+public class DetermineWhetherMatrixCanBeObtainedByRotation {
     public static void main(String[] args) {
-        int[][] matrix = {
+        int[][] mat = {
                 {0, 1},
                 {1, 0}
         };
 
+        int[][] target = {
+                {1, 0},
+                {0, 1}
+        };
 
-        for (int i = 0; i < 4; i++) {
-            rotate(matrix);
-            for (int[] j : matrix) {
-                System.out.println(Arrays.toString(j));
+        for (int i = 0; i <= 3; i++) {
+            if (check(mat, target)) {
+                System.out.println(true);
+            } else {
+                rotate(mat);
             }
-            System.out.println("_________________________");
-
         }
+
 
     }
 
     static void rotate (int[][] matrix) {
-
-
         for (int i = 0; i < matrix.length/2; i++) {
             int[] temp = matrix[i];
             matrix[i] = matrix[matrix.length-1-i];
@@ -37,8 +37,17 @@ public class RotateMatrixBy90 {
                 matrix[c][r] = temp;
             }
         }
-
-
     }
 
+    static boolean check (int[][] mat1, int[][] mat2) {
+        for (int i = 0; i < mat1.length; i++) {
+            for (int j = 0; j < mat1[0].length; j++) {
+                if (mat1[i][j] != mat2[i][j]) {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
 }

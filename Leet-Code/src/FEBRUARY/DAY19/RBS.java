@@ -1,8 +1,6 @@
 package FEBRUARY.DAY19;
 
 import java.io.*;
-
-
 import java.util.Arrays;
 
 public class RBS {

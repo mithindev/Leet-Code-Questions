@@ -4,8 +4,11 @@ import java.util.Arrays;
 
 public class RBS1 {
     public static void main(String[] args) {
-        int arr[] = {1};
-        System.out.println(search(arr, 0));
+        int[] arr = {4,5,6,6,7,0,1,2,4,4};
+        System.out.println(search(arr, 3));
+//        System.out.println(findPivot(arr));
+//        System.out.println(binarySearch(arr, 3));
+//        System.out.println(binarySearch(arr, 3));
     }
 
     static int search(int[] arr, int target) {
@@ -55,7 +58,7 @@ public class RBS1 {
 
     static int binarySearch (int[] arr, int target) {
         int s = 0;
-        int e = 0;
+        int e = arr.length - 1;
 
         while (s <= e) {
             int mid = s + (e - s)/2;
@@ -70,4 +73,6 @@ public class RBS1 {
         }
         return -1;
     }
+
+
 }

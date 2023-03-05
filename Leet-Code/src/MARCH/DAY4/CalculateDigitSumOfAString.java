@@ -8,9 +8,9 @@ public class CalculateDigitSumOfAString {
 
     }
 
-    static String digitSum(String str, int k) {
-        
-    }
+//    static String digitSum(String str, int k) {
+//
+//    }
 
     static List<String> usingSubstringMethod(String text, int n) {
         List<String> results = new ArrayList<>();

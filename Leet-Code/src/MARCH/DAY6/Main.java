@@ -2,21 +2,22 @@ package MARCH.DAY6;
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {2,3,4,7,11};
-        System.out.println(findKthPositive(arr, 5));
+        int[] arr = {1, 2, 3, 4};
+        System.out.println(findKthPositive(arr, 2));
 //        System.out.println(BinarySearch(arr, 1));
 
     }
 
     static int findKthPositive(int[] arr, int k) {
-        int ans = 1;
-        int i = k;
+        int temp = 1;
+        int ans = 0;
 
-        while (i >= 0) {
-            if (!BinarySearch(arr, ans)) {
-                ans++;
-                i--;
+        while (k > 0) {
+            if (!BinarySearch(arr, temp)) {
+                k--;
+                ans = temp;
             }
+            temp++;
         }
         return ans;
     }

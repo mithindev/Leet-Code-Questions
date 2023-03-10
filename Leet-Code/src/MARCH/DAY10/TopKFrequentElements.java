@@ -6,6 +6,13 @@ import java.util.List;
 
 public class TopKFrequentElements {
     public static void main(String[] args) {
+        int[] arr = {1, 1, 1, 2, 2, 3};
+//        System.out.println(Arrays.toString(RmDup(arr)));
+        int[] temp = RmDup(arr);
+        Sort(arr, temp);
+        System.out.println(Arrays.toString(temp));
+        System.out.println(Arrays.toString(topKFrequent(arr, 2)));
+
 
     }
 
@@ -15,9 +22,9 @@ public class TopKFrequentElements {
         for (int i = 0; i < ans.length; i++) {
             for (int j = 1; j < ans.length - 1; j++) {
                 if (count(arr, ans[j]) < count(arr, ans[j-1])) {
-                    int temp = arr[j];
-                    arr[j] = arr[j - 1];
-                    arr[j - 1] = temp;
+                    int temp = ans[j];
+                    ans[j] = ans[j - 1];
+                    ans[j - 1] = temp;
                 }
             }
         }
@@ -26,6 +33,19 @@ public class TopKFrequentElements {
             fans[i] = ans[ans.length - i - 1];
         }
         return fans;
+    }
+
+    static void Sort (int[] arr, int[] ans) {
+        for (int i = 0; i < ans.length; i++) {
+            for (int j = 1; j < ans.length; j++) {
+                if (count(arr, ans[j]) < count(arr, ans[j-1])) {
+                    int temp = ans[j];
+                    ans[j] = ans[j - 1];
+                    ans[j - 1] = temp;
+                }
+            }
+        }
+
     }
 
     static int count (int[] arr, int target) {

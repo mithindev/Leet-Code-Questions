@@ -7,15 +7,11 @@ import java.util.List;
 public class RemoveDuplicates {
     public static void main(String[] args) {
         int[] arr = {1, 1, 1, 2, 2, 3, 4, 55, 6, 4, 2, 7};
-        ArrayList list = (ArrayList) RmDup (arr);
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i) + ", ");
-        }
+        System.out.println(Arrays.toString(RmDup(arr)));
 
     }
 
-    static List<Integer> RmDup (int[] arr) {
+    static int[] RmDup (int[] arr) {
         ArrayList list = new ArrayList();
         Arrays.sort(arr);
         list.add(arr[0]);
@@ -25,6 +21,7 @@ public class RemoveDuplicates {
                 list.add(arr[i + 1]);
             }
         }
-        return list;
+        int[] ans = list.stream().mapToInt(i -> (int) i).toArray();
+        return ans;
     }
 }

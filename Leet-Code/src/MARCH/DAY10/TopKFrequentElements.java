@@ -10,7 +10,22 @@ public class TopKFrequentElements {
     }
 
     static int[] topKFrequent(int[] arr, int k) {
+        int[] ans = RmDup(arr);
 
+        for (int i = 0; i < ans.length; i++) {
+            for (int j = 1; j < ans.length - 1; j++) {
+                if (count(arr, ans[j]) < count(arr, ans[j-1])) {
+                    int temp = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = temp;
+                }
+            }
+        }
+        int[] fans = new int[k];
+        for (int i = 0; i < k; i++) {
+            fans[i] = ans[ans.length - i - 1];
+        }
+        return fans;
     }
 
     static int count (int[] arr, int target) {
@@ -23,7 +38,7 @@ public class TopKFrequentElements {
         return count;
     }
 
-    static List<Integer> RmDup (int[] arr) {
+    static int[] RmDup (int[] arr) {
         ArrayList list = new ArrayList();
         Arrays.sort(arr);
         list.add(arr[0]);
@@ -33,6 +48,7 @@ public class TopKFrequentElements {
                 list.add(arr[i + 1]);
             }
         }
-        return list;
+        int[] ans = list.stream().mapToInt(i -> (int) i).toArray();
+        return ans;
     }
 }

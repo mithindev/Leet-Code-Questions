@@ -1,26 +1,18 @@
 package MARCH.DAY10;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
-public class TopKFrequentElements {
+public class RemoveDuplicates {
     public static void main(String[] args) {
+        int[] arr = {1, 1, 1, 2, 2, 3, 4, 55, 6, 4, 2, 7};
+        ArrayList list = (ArrayList) RmDup (arr);
 
-    }
-
-    static int[] topKFrequent(int[] arr, int k) {
-
-    }
-
-    static int count (int[] arr, int target) {
-        int count = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
-                count++;
-            }
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + ", ");
         }
-        return count;
+
     }
 
     static List<Integer> RmDup (int[] arr) {

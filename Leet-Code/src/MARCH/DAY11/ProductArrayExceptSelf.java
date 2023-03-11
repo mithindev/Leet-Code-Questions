@@ -1,50 +1,28 @@
 package MARCH.DAY11;
 
+import java.util.Arrays;
+
 public class ProductArrayExceptSelf {
     public static void main(String[] args) {
-
+        int[] arr = {1, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(productExceptSelf(arr)));
     }
 
     static int[] productExceptSelf(int[] arr) {
+
+        int left = 1;
+        int right = 1;
         int[] ans = new int[arr.length];
 
-        if (prod(arr) == 0) {
-            int product = ProdWithoutZeroes(arr);
-            for (int i = 0; i < ans.length; i++) {
-                if (arr[i] != 0) {
-                    ans[i] = 0;
-                } else {
-                    ans[i] = product;
-                }
-            }
-        } else {
-            int product = prod(arr);
-            for (int i = 0; i < ans.length; i++) {
-                ans[i] = product / arr[i];
-            }
+        for(int i = 0; i < arr.length; i++) {
+            ans[i] = left;
+            left *= arr[i];
+        }
+
+        for(int i = arr.length -1; i > -1; i--) {
+            ans[i] = right*ans[i];  // left * right
+            right *= arr[i];
         }
         return ans;
     }
-
-    static int prod (int[] arr) {
-        int product = 1;
-
-        for (int i = 0; i < arr.length; i++) {
-            product *= arr[i];
-        }
-        return product;
-    }
-
-    static int ProdWithoutZeroes (int[] arr) {
-        int product = 1;
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != 0) {
-                product *= arr[i];
-            }
-        }
-        return product;
-
-    }
-
 }

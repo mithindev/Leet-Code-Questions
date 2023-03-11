@@ -30,3 +30,8 @@ This project is licensed under the [MIT](https://opensource.org/licenses/MIT) Li
 - [Leet Code](https://leetcode.com/) for providing the platform for the questions.
 - [Stack Overflow](https://stackoverflow.com/) for being an invaluable resource for coding questions.
 
+## 🧑‍💻 Leetcode Stats
+<p align="center">
+  <img align="center" src="https://leetcard.jacoblin.cool/mithindev?theme=unicorn"/>
+</p>
+

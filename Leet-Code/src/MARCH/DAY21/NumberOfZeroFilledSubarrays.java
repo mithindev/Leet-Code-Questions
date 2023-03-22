@@ -6,7 +6,7 @@ import java.util.List;
 
 public class NumberOfZeroFilledSubarrays {
     public static void main(String[] args) {
-        int[] arr = {1, 3, 0, 0, 2, 0, 0, 4};
+        int[] arr = {2, 10, 19};
         System.out.println(zeroFilledSubarray(arr));
 
     }
@@ -17,20 +17,20 @@ public class NumberOfZeroFilledSubarrays {
         while (i < arr.length) {
             if (arr[i] != 0) {
                 i++;
-            }
-            if (arr[i] == 0) {
+            } else if (arr[i] == 0) {
                 int count = 1;
-                while (arr[i++] == 0) {
+                while (i < arr.length && arr[i++] == 0) {
                     count++;
                 }
-                ans+= fact(count);
+                ans+= operation(count - 1);
             }
 
         }
         return ans;
     }
 
-    static int fact (int num) {
+    static long operation (int num) {
+
         return num * (num + 1)/2;
     }
 }

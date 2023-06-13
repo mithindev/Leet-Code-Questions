@@ -63,6 +63,6 @@ public class Main {
     static boolean isSimilar(int[] col, int[] row) {
         return Arrays.equals(col, row);
     }
-    
+
 
 }

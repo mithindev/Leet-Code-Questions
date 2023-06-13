@@ -1,5 +1,7 @@
 package JUNE.DAY14;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         int[][] grid = {
@@ -12,25 +14,55 @@ public class Main {
         System.out.println(ans);
     }
 
+//    static int equalPairs(int[][] grid) {
+//        int count = 0;
+//        int len = grid.length;
+//
+//        for (int col = 0; col < len; col++) {
+//
+//            int[] column = new int[len];
+//
+//            for (int i = 0; i < len; i++) {
+//                column[i] = grid[i][col];
+//            }
+//
+//            for (int row = 0; row < len; row++) {
+//
+//                if (isPresent(column, grid[row])) {
+//                    count++;
+//                }
+//            }
+//
+//        }
+//
+//        return count;
+//    }
+
     static int equalPairs(int[][] grid) {
         int count = 0;
-        for (int c = 0; c < grid.length; c++) {
-            for (int r = 0; r < grid.length; r++) {
-                if (!isPresent(grid[c], grid[c][r])) {
-                    return count;
+        int len = grid.length;
+
+        for (int col = 0; col < len; col++) {
+            int[] column = new int[len];
+
+            for (int i = 0; i < len; i++) {
+                column[i] = grid[i][col];
+            }
+
+            for (int row = 0; row < len; row++) {
+                if (isSimilar(column, grid[row])) {
+                    count++;
                 }
             }
-            count++;
         }
+
         return count;
     }
 
-    static boolean isPresent (int[] arr, int target) {
-        for (int i : arr) {
-            if (i == target) {
-                return true;
-            }
-        }
-        return false;
+
+    static boolean isSimilar(int[] col, int[] row) {
+        return Arrays.equals(col, row);
     }
+    
+
 }

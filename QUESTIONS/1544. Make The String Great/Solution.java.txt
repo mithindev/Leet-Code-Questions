@@ -1,0 +1,23 @@
+class Solution {
+    static String makeGood(String str) {
+        char[] arr = str.toCharArray();
+        int len = arr.length;
+
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = 0; i < len; i++) {
+            if (ans.length() > 0 && Math.abs(ans.charAt(ans.length() - 1) - arr[i]) == 'a' - 'A') {
+                ans.setLength(ans.length() - 1);
+                continue;
+            }
+
+            if (i != len - 1 && Math.abs(arr[i] - arr[i + 1]) == 'a' - 'A') {
+                i++;
+            } else {
+                ans.append(arr[i]);
+            }
+        }
+
+        return ans.toString();
+    }
+}

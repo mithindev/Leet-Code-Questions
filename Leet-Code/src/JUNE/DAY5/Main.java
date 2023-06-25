@@ -35,7 +35,7 @@ public class Main {
         while (!list.isEmpty()) {
             ans.append(list.removeFirst());
         }
-        
+
         return ans.toString();
     }
 }

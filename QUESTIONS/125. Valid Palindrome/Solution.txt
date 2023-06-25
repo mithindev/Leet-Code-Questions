@@ -1,0 +1,17 @@
+class Solution {
+    static boolean isPalindrome(String s) {
+    StringBuilder str = new StringBuilder();
+
+    for (char ch : s.toCharArray()) {
+        if (Character.isLetter(ch) || Character.isDigit(ch)) {
+            str.append(Character.toLowerCase(ch));
+        }
+    }
+
+    StringBuilder temp = new StringBuilder(str);
+    temp.reverse();
+
+    return str.toString().equals(temp.toString());
+}
+
+}

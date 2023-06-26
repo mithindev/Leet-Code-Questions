@@ -1,0 +1,90 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNodes(ListNode head) {
+        head = reverse(head);
+        int max = head.val;
+
+        ListNode prev = head;
+        ListNode temp = head.next;
+        
+        while (temp != null) {
+            if (temp.val < max) {
+                prev.next = temp.next;
+            } else {
+                max = Math.max(max, temp.val);
+                prev = prev.next;
+            }
+            temp = temp.next;
+        }
+
+        return reverse(head);
+    }
+
+    public ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode prev = null;
+        ListNode current = head;
+
+        while (current != null) {
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        return prev;
+    }
+
+    
+
+    // BRUTE - FORCE APPROACH
+
+    // public ListNode removeNodes(ListNode head) {
+    //     ListNode temp = head;
+    //     ListNode prev = null;
+
+    //     while (temp != null) {
+    //         if (isLesser(temp)) {
+    //             if (prev != null) {
+    //                 deleteNode(prev);
+    //                 temp = prev.next;
+    //             } else {
+    //                 head = temp.next;
+    //                 temp = head;
+    //             }
+    //         } else {
+    //             prev = temp;
+    //             temp = temp.next;
+    //         }
+    //     }
+
+    //     return head;
+    // }
+
+    // public boolean isLesser(ListNode node) {
+    //     ListNode temp = node.next;
+    //     while (temp != null) {
+    //         if (temp.val > node.val) {
+    //             return true;
+    //         }
+    //         temp = temp.next;
+    //     }
+    //     return false;
+    // }
+
+    // public void deleteNode(ListNode prev) {
+    //     prev.next = prev.next.next;
+    // }
+}

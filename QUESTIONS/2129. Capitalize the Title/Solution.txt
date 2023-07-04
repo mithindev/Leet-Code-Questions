@@ -1,0 +1,23 @@
+class Solution {
+    public String capitalizeTitle(String title) {
+        StringBuilder ans = new StringBuilder(title.toLowerCase());
+
+        int i = 0;
+        int j = 0;
+        int len = ans.length();
+
+        while (j < len) {
+            while (j < len && ans.charAt(j) != ' ') {
+                j++;
+            }
+
+            if (j - i > 2) {
+                ans.setCharAt(i, Character.toUpperCase(ans.charAt(i)));
+            }
+            i = j + 1;
+            j++;
+        }
+
+        return ans.toString();
+    }
+}

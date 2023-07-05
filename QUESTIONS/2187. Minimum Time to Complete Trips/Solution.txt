@@ -1,0 +1,41 @@
+class Solution {
+    static long minimumTime(int[] time, int totalTrips) {
+        int l = time.length;
+        int maxTime = getMaxTime(time);
+
+        long s = 1;
+        long e = (long) maxTime * totalTrips;
+
+        while (s <= e) {
+            long mid = s + (e - s) / 2;
+
+            long temp = noOfTrips(mid, time, l);
+
+            if (temp >= totalTrips) {
+                e = mid - 1;
+            } else {
+                s = mid + 1;
+            }
+        }
+
+        return s;
+    }
+
+    static int getMaxTime(int[] time) {
+        int maxTime = Integer.MIN_VALUE;
+        for (int t : time) {
+            maxTime = Math.max(maxTime, t);
+        }
+        return maxTime;
+    }
+
+    static long noOfTrips(long limit, int[] time, int l) {
+        long totalTrips = 0;
+
+        for (int i = 0; i < l; i++) {
+            totalTrips += limit / time[i];
+        }
+
+        return totalTrips;
+    }
+}

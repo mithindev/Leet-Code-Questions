@@ -1,0 +1,30 @@
+class Solution {
+    public long minimumTime(int[] time, int totalTrips) {
+        int l = time.length;
+
+        int[] trips = new int[l];
+
+        long ans = 1;
+
+        while (true) {
+            for (int i = 0; i < l; i++) {
+                trips[i] = (int) ans / time[i];
+            }
+            
+            if (sum(trips) >= totalTrips) {
+                return ans;
+            }
+            
+            ans++;
+        }
+        
+    }
+
+    public long sum (int[] arr) {
+        int ans = 0;
+        for (int i : arr) {
+            ans += i;
+        }
+        return ans;
+    }
+}

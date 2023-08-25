@@ -1,0 +1,18 @@
+#2828. Check if a String Is an Acronym of Words
+
+
+class Solution {
+    public boolean isAcronym(List<String> words, String s) {
+        String ans = "";
+
+        for (String word : words) {
+            ans += word.charAt(0);
+        } 
+
+        if (ans.equals(s)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

@@ -1,12 +1,7 @@
-package AUGUST.DAY25;
+//2824. Count Pairs Whose Sum is Less than Target
 
-import java.util.List;
 
-public class Main {
-    public static void main(String[] args) {
-
-    }
-
+class Solution {
     static int countPairs(List<Integer> arr, int target) {
         int count = 0;
 

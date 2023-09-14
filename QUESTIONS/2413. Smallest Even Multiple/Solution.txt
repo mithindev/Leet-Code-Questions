@@ -1,3 +1,6 @@
+#2413. Smallest Even Multiple
+
+
 class Solution:
     def GCD(self, nums: List[int]) -> int:
 

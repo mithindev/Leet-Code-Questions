@@ -1,0 +1,14 @@
+class Solution:
+    def findGCD(self, arr: List[int]) -> int:
+        arr.sort()
+
+        s = arr[0]
+        l = arr[-1]
+
+        ans = 1
+
+        for i in range(2, s + 1):
+            if (s%i == 0 and l%i == 0):
+                ans = i
+        
+        return ans        

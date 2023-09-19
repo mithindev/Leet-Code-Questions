@@ -16,3 +16,5 @@ class Solution:
         t2 = self.assign(s.split(" "))
 
         return t1 == t2
+
+#END

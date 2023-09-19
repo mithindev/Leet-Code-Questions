@@ -1,0 +1,18 @@
+class Solution:
+    def assign(self, lst) -> list:
+        ans = []
+
+        temp = {}
+
+        for i in range(len(lst)):
+            temp[lst[i]] = i
+
+        for ch in lst:
+            ans.append(temp[ch])
+        return ans
+
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        t1 = self.assign(list(pattern))
+        t2 = self.assign(s.split(" "))
+
+        return t1 == t2

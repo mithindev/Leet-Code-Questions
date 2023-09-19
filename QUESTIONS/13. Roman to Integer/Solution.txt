@@ -1,0 +1,31 @@
+class Solution:
+    values =	{
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000,
+    }
+    def romanToInt(self, roman: str) -> int:
+        ans = 0
+        i = 0
+
+        while i < len(roman):
+            t1 = self.values[roman[i]]
+
+            if (i + 1 < len(roman)):
+                t2 = self.values[roman[i + 1]]
+
+                if t1 >= t2:
+                    ans += t1
+                else:
+                    ans -= t1
+                i += 1
+
+            else:
+                ans += t1
+                i += 1
+        return ans
+        

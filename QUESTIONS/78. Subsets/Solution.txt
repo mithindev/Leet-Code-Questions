@@ -1,0 +1,18 @@
+#78. Subsets
+
+class Solution:
+    def sub_sets (self, arr, ans, i):
+        if i >= len(arr):
+            return [ans]
+
+        num = arr[i]
+
+        included = self.sub_sets(arr, ans + [num], i + 1)
+        not_included = self.sub_sets(arr, ans, i + 1)
+
+        return included + not_included
+
+
+    def subsets(self, arr: List[int]) -> List[List[int]]:
+        return self.sub_sets(arr, [], 0)
+        

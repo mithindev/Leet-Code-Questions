@@ -1,0 +1,19 @@
+class Solution:
+    def assign(self, lst) -> list:
+        ans = []
+
+        temp = {}
+
+        for i in range(len(lst)):
+            temp[lst[i]] = i
+
+        for ch in lst:
+            ans.append(temp[ch])
+        return ans
+
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        t1 = self.assign(list(s))
+        t2 = self.assign(list(t))
+
+        return t1 == t2
+        

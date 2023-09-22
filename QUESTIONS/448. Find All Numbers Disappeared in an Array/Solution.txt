@@ -1,0 +1,4 @@
+class Solution:
+    def findDisappearedNumbers(self, arr: List[int]) -> List[int]:
+        return set(range(1, len(arr) + 1)).difference(set(arr))
+        

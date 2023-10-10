@@ -1,0 +1,47 @@
+class Solution:
+    # def count(self, s, l, r):
+    #     ans = 0
+    #     for i in range(l + 1, r):
+    #         if s[i] == '*':
+    #             ans += 1
+    #     return ans
+
+    def platesBetweenCandles(self, s: str, queries: List[List[int]]) -> List[int]:
+        ans = []
+        cnd = []
+        for i in range(len(s)):
+            if s[i] == '|':
+                cnd.append(i)
+        
+        for querie in queries:
+            l = querie[0]
+            r = querie[1]
+
+            lp, rp = -1, -1
+
+            s = 0
+            e = len(cnd) - 1
+            while (s <= e):
+                mid = s + (e - s) // 2
+                if (cnd[mid] >= l):
+                    e = mid - 1
+                    lp = mid
+                else:
+                    s = mid + 1
+            
+            s = 0
+            e = len(cnd) - 1
+            while (s <= e):
+                mid = s + (e - s) // 2
+                if (cnd[mid] <= r):
+                    s = mid + 1
+                    rp = mid
+                else:
+                    e = mid - 1
+            
+            if (lp != -1 and rp != -1 and rp > lp):
+                ans.append(cnd[rp] - cnd[lp] - (rp - lp))
+            else:
+                ans.append(0)
+        
+        return ans

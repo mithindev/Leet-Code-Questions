@@ -1,0 +1,35 @@
+817. Linked List Components
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    # def getTo(self, item, head):
+    #     temp = head
+
+    #     while temp is not None:
+    #         if temp.val == item:
+    #             return temp
+    #         temp = temp.next
+
+    def numComponents(self, head: Optional[ListNode], arr: List[int]) -> int:
+        ans = 0
+
+        # # for i in range (len(arr)):
+        # #     temp = self.getTo(arr[i], head)
+        # #     if (temp and temp.next and arr[i + 1] == temp.next.val):
+        # #         ans += 1
+
+        temp = head
+        while temp.next is not None:
+
+            if (temp.val in arr and temp.next.val in arr):
+                ans += 1
+            
+            temp = temp.next
+
+        
+        return (len(arr) - ans)
+       

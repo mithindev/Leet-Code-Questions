@@ -1,0 +1,70 @@
+class Solution:
+    def helper(self, arr, l, target):
+        if target >= arr[l - 1]:
+            return l
+        if target < arr[0]:
+            return 0
+
+        s = 0
+        e = l - 1
+
+        while s < e:
+            mid = s + (e - s) // 2  
+
+            if arr[mid] == target:
+                s = mid + 1
+            elif target < arr[mid]:
+                e = mid
+            else:
+                s = mid + 1
+
+        return s
+
+
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+
+        '''
+        BRUTE-FORCE SOLUTION:-
+        
+        bloom = {}
+
+        ans = []
+
+        for i in flowers:
+            for j in range (i[0], i[1] + 1):
+                if j not in bloom.keys():
+                    bloom[j] = 0
+                    bloom[j] += 1
+                else:
+                    bloom[j] += 1
+
+        for i in people:
+            if i in bloom.keys():
+                ans.append(bloom[i])
+            else:
+                ans.append(0)
+        
+        return ans
+        '''
+
+        start = [i[0] for i in flowers]
+        start.sort()
+        end = [i[1] + 1 for i in flowers] 
+        end.sort()
+
+        l = len(start)
+
+        ans = []
+
+        for x in people:
+            i = self.helper(start, l, x)
+            j = self.helper(end, l, x)
+            ans.append(i - j)
+        
+        return ans
+        
+
+
+
+
+         

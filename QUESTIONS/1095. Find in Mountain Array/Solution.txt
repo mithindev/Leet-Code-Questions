@@ -1,0 +1,84 @@
+1095. Find in Mountain Array
+
+# """
+# This is MountainArray's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class MountainArray:
+#    def get(self, index: int) -> int:
+#    def length(self) -> int:
+
+class Solution:
+    def peakIndexInMountainArray(self, arr: 'MountainArray') -> int:
+        s = 0
+        e = arr.length() - 1
+
+        while s <= e:
+            mid = s + (e - s) // 2
+
+            if arr.get(mid) > arr.get(mid - 1) and arr.get(mid) > arr.get(mid + 1):
+                return mid
+            elif arr.get(mid) < arr.get(mid + 1):
+                s = mid + 1
+            else:
+                e = mid - 1
+
+    def search1(self, arr: 'MountainArray', st, l, target):
+        s = st
+        e = l
+
+        while s <= e:
+            mid = s + (e - s) // 2  
+
+            if arr.get(mid) == target:
+                return mid
+            elif target > arr.get(mid):
+                s = mid + 1
+            else:
+                e = mid - 1
+
+        return -1
+
+    def search2(self, arr: 'MountainArray', st, l, target):
+        s = st
+        e = l
+
+        while s <= e:
+            mid = s + (e - s) // 2  
+
+            if arr.get(mid) == target:
+                return mid
+            elif target < arr.get(mid):
+                s = mid + 1
+            else:
+                e = mid - 1
+
+        return -1
+
+
+    def findInMountainArray(self, target: int, arr: 'MountainArray') -> int:
+        # peak = self.peakIndexInMountainArray(arr)
+        low = 1
+        high = arr.length() - 2
+        while low != high:
+            test_index = (low + high) >> 1
+            curr = arr.get(test_index) 
+            next = arr.get(test_index + 1)
+            
+            if curr < next:
+                if curr == target:
+                    return test_index
+                if next == target:
+                    return test_index + 1
+                low = test_index + 1
+            else:
+                high = test_index
+        
+        peak = low
+
+        result = self.search1(arr, 0, peak, target)
+        if result != -1:
+            return result
+
+        result = self.search2(arr, peak + 1, arr.length() - 1, target)
+        return result

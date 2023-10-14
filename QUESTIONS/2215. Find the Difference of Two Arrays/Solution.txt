@@ -1,0 +1,33 @@
+2215. Find the Difference of Two Arrays
+
+class Solution:
+    '''
+    def helper (self, arr1, arr2):
+        ans = []
+
+        for i in set(arr1):
+            if i not in set(arr2):
+                ans.append(i)
+        
+        return ans
+
+    def findDifference(self, arr1: List[int], arr2: List[int]) -> List[List[int]]:
+        ans = []
+
+        ans.append(self.helper(arr1, arr2))
+        ans.append(self.helper(arr2, arr1))
+
+        return ans
+    '''
+    
+    def findDifference(self, arr1: List[int], arr2: List[int]) -> List[List[int]]:
+        ans = []
+
+        temp1 = set(arr1)
+        temp2 = set(arr2)
+
+        ans.append(list(temp1 - temp2))
+        ans.append(list(temp2 - temp1))
+        
+        return ans
+        

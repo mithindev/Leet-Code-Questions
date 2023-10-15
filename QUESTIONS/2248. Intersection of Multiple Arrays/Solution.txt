@@ -1,0 +1,17 @@
+class Solution:
+    def intersection(self, array: List[List[int]]) -> List[int]:
+        count = {}
+        ans = []
+
+        for arr in array:
+            for i in range(len(arr)):
+                if arr[i] not in count:
+                    count[arr[i]] = 1
+                else:
+                    count[arr[i]] += 1
+
+        for key, value in count.items():
+            if value == len(array):
+                ans.append(key)
+        ans.sort()
+        return ans

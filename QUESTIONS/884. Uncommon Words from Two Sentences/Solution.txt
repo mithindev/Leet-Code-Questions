@@ -1,0 +1,96 @@
+class Solution:
+    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
+        s1 = s1.split()
+        s2 = s2.split()
+
+        ans = []
+        words = s1 + s2
+
+        count = {}
+
+        for word in words:
+            if word not in count:
+                count[word] = 1
+            else:
+                count[word] += 1
+        
+        for key, val in count.items():
+            if val == 1:
+                ans.append(key)
+        
+        return ans
+
+
+        '''
+        words1 = s1.split()
+        words2 = s2.split()
+
+        ans = []
+
+        c1 = {}
+        c2 = {}
+
+        for word in words1:
+            if word not in c1:
+                c1[word] = 1
+            else:
+                c1[word] += 1
+        
+        for word in words2:
+            if word not in c1 and word not in c2:
+                c2[word] = 1
+            elif word not in c1:
+                c2[word] += 1
+        
+        c1 = {}
+        
+        for word in words1:
+            if word not in c2 and word not in c1:
+                c1[word] = 1
+            elif word not in c2:
+                c1[word] += 1
+        
+        for key, val in c1.items():
+            if val == 1:
+                ans.append(key)
+        for key, val in c2.items():
+            if val == 1:
+                ans.append(key)
+            
+        
+        return ans
+        '''
+
+        '''
+        words1 = s1.split()
+        words2 = s2.split()
+
+        ans = []
+
+        c1 = {}
+        c2 = {}
+
+        for word in words1:
+            if word not in c1:
+                c1[word] = 1
+            else:
+                c1[word] += 1
+        
+        for word in words2:
+            if word not in c1 and word not in c2:
+                c2[word] = 1
+            elif word not in c1:
+                c2[word] += 1
+            
+        for key, val in c1.items():
+            if val == 1:
+                ans.append(key)
+        for key, val in c2.items():
+            if val == 1:
+                ans.append(key)
+            
+        
+        return ans
+        '''
+        
+        

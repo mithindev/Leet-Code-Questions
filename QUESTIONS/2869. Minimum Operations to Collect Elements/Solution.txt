@@ -1,0 +1,17 @@
+class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        temp = [i for i in range(1, k + 1)]
+        ans = 0
+
+        while temp:
+            x = nums[len(nums) - 1]
+            nums.pop()
+
+            if x in temp:
+                temp.remove(x)
+            
+            ans += 1
+        
+        return ans
+
+        

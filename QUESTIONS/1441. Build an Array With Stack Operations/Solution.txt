@@ -1,0 +1,45 @@
+class Solution:
+    def buildArray(self, target: List[int], n: int) -> List[str]:
+        stack = []
+        ans = []
+
+        pt = 0
+
+        for i in range(1, n + 1):
+            stack.append(i)
+            ans.append("Push")
+            if i != target[pt]:
+                stack.pop()
+                ans.append("Pop")
+            else:
+                pt += 1
+
+            if pt == len(target):
+                break
+
+        return ans
+        '''
+        stack = [1]
+        stream = [i for i in range(1, n + 1)]
+        ans = ["Push"]
+
+        pt = 0
+        ps = 1
+
+        while (stack is not target):
+            while (stack[len(stack) - 1] != target[pt]):
+                stack.pop()
+                ans.append("Pop")
+                stack.append(stream[ps])
+                ans.append("Push")
+                ps += 1
+            while (stack[len(stack) - 1] == target[pt]):
+                ps += 1
+                stack.append(stream[ps])
+                ans.append("Push")
+                pt += 1 
+            
+        return ans
+        '''
+            
+

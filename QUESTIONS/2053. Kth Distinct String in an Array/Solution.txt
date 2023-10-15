@@ -1,0 +1,22 @@
+class Solution:
+    def kthDistinct(self, words: List[str], k: int) -> str:
+        count = {}
+
+        for word in words:
+            if word not in count:
+                count[word] = 1
+            else:
+                count[word] += 1
+        
+        i = 0
+
+        for key, val in count.items():
+            if val == 1:
+                i += 1
+
+            if i == k:
+                return key
+        
+        return ""
+            
+        

@@ -1,0 +1,71 @@
+class Solution:
+    # def rNeighbour(self, arr, i, l):
+    #     for j in range( i + 1, l):
+    #         if arr[j] != arr[i]:
+    #             return j
+        
+    #     return -1
+    
+    # def lNeighbour(self, arr, i, l):
+    #     for j in range (i - 1, -1, -1):
+    #         if (arr[j] != arr[i]):
+    #             return j
+        
+    #     return -1
+
+
+    # def countHillValley(self, arr: List[int]) -> int:
+    #     ans = 0
+
+    #     for i in range (1, len(arr) - 1):
+    #         item = arr[i]
+    #         r = self.rNeighbour(arr, i, len(arr))
+    #         l = self.lNeighbour(arr, i, len(arr))
+
+    #         if r != -1 and l != -1:
+    #             if (item > arr[r] and item > arr[l]):
+    #                 ans += 1
+    #             elif (item < arr[r] and item < arr[l]):
+    #                 ans += 1        
+    #     return ans
+
+        # def removeDuplicates(self, arr):
+        #     ans = []
+
+        #     for i in arr:
+        #         if i not in ans:
+        #             ans.append(i)
+            
+        #     return ans
+        
+    def countHillValley(self, arr: List[int]) -> int:
+        ans = 0
+        n = len(arr)
+
+        for i in range(1, n - 1):
+            if arr[i] == arr[i - 1]:
+                continue
+            
+            l = i - 1
+            r = i + 1
+
+            while (r < n and arr[i] == arr[r]): r += 1
+
+            if r >= n: continue
+
+            if (arr[i] > arr[l] and arr[i] > arr[r]): ans += 1
+            elif (arr[i] < arr[l] and arr[i] < arr[r]): ans += 1
+        
+        return ans
+
+        # arr = self.removeDuplicates(arr)
+
+        # for i in range(1, len(arr) - 1):
+        #     item = arr[i]
+        #     l = arr[i - 1]
+        #     r = arr[i + 1]
+
+        #     if (item > l and item > r) or (item < l and item < r):
+        #         ans += 1
+
+        # return ans

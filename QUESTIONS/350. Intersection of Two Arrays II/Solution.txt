@@ -1,0 +1,25 @@
+class Solution:
+    def intersect(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        ans = []
+        arr1.sort()
+        arr2.sort()
+
+        while arr1 and arr2:
+            if arr1[0] == arr2[0]:
+                ans.append(arr1[0])
+                arr1.pop(0)
+                arr2.pop(0)
+
+            elif arr1[0] < arr2[0]:
+                arr1.pop(0)
+            else:
+                arr2.pop(0)
+        
+        return ans
+
+        '''
+        temp = set(nums1) - set(nums2)
+
+        return list(set(nums1) - temp)
+        '''
+        

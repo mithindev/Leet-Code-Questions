@@ -1,0 +1,23 @@
+class Solution:
+    def countWords(self, words1: List[str], words2: List[str]) -> int:
+        ans = 0
+        c1 = {}
+        c2 = {}
+
+        for word in words1:
+            if word not in c1:
+                c1[word] = 1
+            else:
+                c1[word] += 1
+        
+        for word in words2:
+            if word in c1 and word not in c2:
+                c2[word] = 1
+            elif word in c1:
+                c2[word] += 1
+            
+        for key, val in c2.items():
+            if c1[key] == 1 and val == 1:
+                ans += 1
+        
+        return ans

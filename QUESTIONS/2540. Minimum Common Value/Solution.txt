@@ -1,0 +1,36 @@
+class Solution:
+    '''
+    def search (self, arr, target):
+        s = 0
+        e = len(arr) - 1
+
+        while (s <= e):
+            mid = s + (e - s) // 2
+
+            if (arr[mid] == target):
+                return True
+            
+            elif (arr[mid] < target):
+                s = mid + 1
+            else:
+                e = mid - 1
+        
+        return False
+
+    def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
+        for i in nums1:
+            if self.search(nums2, i):
+                return i
+        
+        return -1
+    '''
+    def getCommon(self, arr1: List[int], arr2: List[int]) -> int:
+        while len(arr1) > 0 and len(arr2) > 0:
+            if arr1[0] == arr2[0]:
+                return arr1[0]
+            elif arr1[0] < arr2[0]:
+                arr1.pop(0)
+            else:
+                arr2.pop(0)
+        return -1
+        

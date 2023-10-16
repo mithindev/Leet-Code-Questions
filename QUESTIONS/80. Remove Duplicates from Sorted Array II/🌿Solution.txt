@@ -1,0 +1,23 @@
+# Intuition
+The problem requires removing duplicates from a sorted list while allowing at most two occurrences of each element.
+
+# Approach
+We iterate through the list and use a pointer 'i' to keep track of the position where non-duplicate elements should be placed. If 'i' is 0 or 1 (the first two elements), or if the current element is different from the element two positions before 'i', we update 'arr[i]' with the current element and increment 'i'. This approach ensures that we keep at most two occurrences of each element in the modified list.
+
+# Complexity
+- Time complexity: O(n), where 'n' is the length of the input list 'arr'.
+- Space complexity: O(1), as we modify the input list in-place without using additional data structures.
+
+
+# Code
+```
+class Solution:
+    def removeDuplicates(self, arr: List[int]) -> int:
+        i = 0
+        for num in arr:
+            if i ==0 or i == 1 or arr[i - 2] != num:
+                arr[i] = num
+                i += 1
+        
+        return i
+```

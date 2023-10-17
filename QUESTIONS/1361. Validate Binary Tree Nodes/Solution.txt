@@ -1,0 +1,74 @@
+class Solution:
+    def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+        if n == 1:
+            return True
+
+        def findRoot():
+            children = set(leftChild) | set(rightChild)
+
+            for i in range(n):
+                if i not in children:
+                    return i
+            
+            return -1
+        
+        root = findRoot()
+        if root == -1:
+            return False
+        
+        visited = {root}
+        stack = [root]
+
+        while stack:
+            r = stack.pop()
+
+            for ch in [leftChild[r], rightChild[r]]:
+                if ch != -1:
+                    if ch in visited:
+                        return False
+                    stack.append(ch)
+                    visited.add(ch)
+        
+        return len(visited) == n
+
+'''
+BRUTE FORCE APPROACH:-
+        if n == 1:
+            return True
+        
+        def findRoot():
+            children = set(leftChild) | set(rightChild)
+
+            for i in range(n):
+                if i not in children:
+                    return i
+            
+            return -1
+        
+        root = findRoot()
+        if root == -1:
+            return False
+        
+        src = {}
+        parent = [-1] * n
+
+        t = 0
+        for i in range (root, (ilen(leftChild)) % len(leftChild)):
+            left, right = leftChild[i], rightChild[i]
+
+        
+            if (left != -1 and parent[left] != -1) or (right != -1 and parent[right] != -1):
+                return False
+            
+            if left != -1:
+                parent[left] = i
+            if right != -1:
+                parent[right] = i
+            
+            t += 1
+            if t == len(leftChild):
+                break
+        
+        ans = parent.count(-1)        
+        return ans == 1
+'''

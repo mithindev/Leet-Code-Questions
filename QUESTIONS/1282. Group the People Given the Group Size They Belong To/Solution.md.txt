@@ -1,0 +1,26 @@
+1282. Group the People Given the Group Size They Belong To
+
+import numpy as np
+from typing import List
+
+class Solution:
+    def splitList(self, arr, size, ans):
+        i = 0
+        while i < len(arr):
+            ans.append(arr[i: i + size])
+            i += size
+
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        ans = []
+
+        groups = list(set(groupSizes))
+
+        dict = {k: [] for k in groups}
+
+        for i in range(len(groupSizes)):
+            dict[groupSizes[i]].append(i)
+    
+        for k, val in dict.items():
+            self.splitList(val, k, ans)
+
+        return ans

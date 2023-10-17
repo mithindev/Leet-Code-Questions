@@ -1,0 +1,96 @@
+class Solution:
+'''
+    LOGICAL SOLUTION:-
+    def removeSubfolders(self, folder: List[str]) -> List[str]:
+        folder.sort(key=lambda item : len(item))
+        ans = set()
+        for item in folder:
+            for i in range (2, len(item)):
+                if item[i] == '/' and item[:i] in ans:
+                    break
+            else:
+                ans.add(item)
+        
+        return list(ans)
+'''
+class TrieNode:
+    def __init__(self, data = none):
+        self.data = data
+        self.children = {}
+        self.isTerminal = False
+    
+    def contains (self, ch):
+        return self.children[ch]
+
+class TrieNode:
+    def __init__(self, data = none):
+        self.data = data
+        self.children = {}
+        self.isTerminal = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        node = self.root
+
+        for ch in word:
+            if ch == '/':
+                continue
+            if not node.contains(ch):
+                node.children[ch] = TrieNode()
+            
+            node = node.children[ch]
+
+            if 
+
+
+    '''
+class TrieNode:
+    def __init__(self, data = none):
+        self.data = data
+        self.children = {}
+        self.isTerminal = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        node = self.root
+
+        for ch in word:
+        if ch not in node.children:
+            node.children[ch] = TrieNode() 
+        
+        node = node.children[ch]
+        
+        node.isTerminal = True
+    
+    def helper(self, root, ans):
+        node = root
+
+        if node.isTerminal:
+            ans.append(node.val)
+        
+        else:
+            self.helper()
+
+
+class Solution:
+    def removeSubfolders(self, folder: List[str]) -> List[str]:
+        struct = Trie()
+        ans = []
+
+        for cd in folder:
+            struct.insert(cd)
+
+        temp = ""        
+        for x in struct.children:
+            
+            while (not x.isTerminal):
+
+            if x.isTerminal:
+                ans.append(Temp)
+'''

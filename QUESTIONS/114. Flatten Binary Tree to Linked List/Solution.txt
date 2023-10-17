@@ -1,0 +1,47 @@
+class Solution:
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        ans = TreeNode()
+        temp = ans
+
+        node = root 
+        stack = [node]
+
+        while stack:
+            parent = stack.pop()
+            if parent:
+                ans.right = parent
+                ans.left = None
+                ans = ans.right
+
+                if parent.right:
+                    stack.append(parent.right)
+                if parent.left:
+                    stack.append(parent.left) 
+        root = temp
+
+
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def preorder(self, root, ans):
+        if root == None:
+            return
+        
+        ans.right = root
+        self.preorder(root.left, ans)
+        self.preorder(root.right, ans)
+
+    def flatten(self, root: Optional[TreeNode]) -> None:
+
+        ans = TreeNode()
+        node = root
+
+        self.preorder(node, ans)
+
+        root = ans    
+'''

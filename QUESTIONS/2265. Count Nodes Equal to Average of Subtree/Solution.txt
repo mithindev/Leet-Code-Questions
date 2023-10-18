@@ -1,0 +1,50 @@
+2265. Count Nodes Equal to Average of Subtree
+
+class Solution:
+    def postOrder (self, root, ans):
+        if not root:
+            return 0, 0
+        
+        lSum, lCount = self.postOrder(root.left, ans)
+        rSum, rCount = self.postOrder(root.right, ans)
+
+        if (lSum + rSum + root.val) // (lCount + rCount + 1) == root.val:
+            ans[0] += 1
+        
+        return lSum + rSum + root.val, lCount + rCount + 1
+
+
+    def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
+        ans = [0]
+
+        self.postOrder(root, ans)
+
+        return ans[0]
+
+
+
+
+# # Definition for a binary tree node.
+# # class TreeNode:
+# #     def __init__(self, val=0, left=None, right=None):
+# #         self.val = val
+# #         self.left = left
+# #         self.right = right
+# class Solution:
+#     def helper (self, root, ans, count):
+#         nodeVal = root.val
+
+#         # Base Case
+#         if not node.left and not node.right:
+
+        
+#         l = self.helper(root.left, ans, count)
+#         r = self.helper(root.right, ans, count)
+
+#         if (lSum
+
+#     def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
+#         dp = {}
+
+
+        

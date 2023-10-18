@@ -1,0 +1,49 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    '''
+    def dfs (self, root, ans, temp):
+        if not root:
+            ans += int(temp)
+            return
+        
+        temp += str(root.val)
+
+        self.dfs(root.left, ans, temp)
+        self.dfs(root.right, ans, temp)     
+                
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+
+        self.dfs(root, ans, "")
+
+        return ans
+    '''
+
+    def dfs(self, root, temp):
+        if not root:
+            return 0
+        
+        temp = temp * 10 + root.val
+
+        if not root.left and not root.right:
+            return temp
+
+        left_sum = self.dfs(root.left, temp)
+        right_sum = self.dfs(root.right, temp)
+
+        return left_sum + right_sum
+
+    def sumNumbers(self, root: TreeNode) -> int:
+        return self.dfs(root, 0)
+
+
+
+
+
+
+        

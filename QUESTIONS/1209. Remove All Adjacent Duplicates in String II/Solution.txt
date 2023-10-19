@@ -1,0 +1,29 @@
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        s1 = [s[0]]
+        s2 = [1]
+
+        for i in s[1:]:
+            if s1 and s1[-1] == i:
+                ptr = s2[-1] + 1
+                s2.append(ptr)
+                s1.append(i)
+
+            else:
+                ptr = 1            
+                s2.append(ptr)
+                s1.append(i)
+            
+            if s2[-1] == k:
+                for j in range (k):
+                    s1.pop()
+                    s2.pop()
+        
+        ans = ""
+        for i in s1:
+            ans += i
+        
+        return ans
+
+
+        

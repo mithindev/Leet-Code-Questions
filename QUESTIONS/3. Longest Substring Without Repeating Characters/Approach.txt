@@ -1,0 +1,43 @@
+class Solution:
+    def lengthOfLongestSubstring(self, word: str) -> int:
+        ans = ""
+        temp = ""
+
+        for i in word:
+            if i not in temp:
+                temp += i
+            else:
+                j = temp.index(i)
+                
+                if len(temp) > len(ans):
+                    ans = temp
+
+                temp = temp[j + 1:]
+                temp += i
+        
+        return max(len(ans), len(temp))
+                
+'''
+    def lengthOfLongestSubstring(self, word: str) -> int:
+        if len(set(word)) < 3:
+            return len(set(word))
+
+        ans = 0
+        s = 0
+        e = 0
+
+        while e < len(word):
+            if e == len(word) - 1:
+                substr = word[s:e + 1]
+            else:
+                substr = word[s:e + 1]
+                ch = word[e + 1]
+
+                if ch in substr:
+                    ans = max(ans, len(substr))
+                    s = e + 1
+
+            e += 1
+
+        return ans
+'''

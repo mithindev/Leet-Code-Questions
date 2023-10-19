@@ -1,0 +1,49 @@
+1190. Reverse Substrings Between Each Pair of Parentheses
+
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        reverse = []
+        stack = []
+
+        for ch in s:
+            if ch != ')':
+                stack.append(ch)
+            elif ch == ')':
+                prev = stack.pop()
+                while (prev != '('):
+                    reverse.append(prev)
+                    prev = stack.pop()
+                stack += reverse
+                reverse = []
+        ans = ""
+        for i in stack:
+            ans += i
+        
+        return ans
+        
+'''
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        open = []
+        close = []
+
+        stack = list[s].reverse
+
+        for i in range(len(s)):
+            if s[i] == '(':
+                open.append(i)
+            elif s[i] == ')':
+                close.append(i)
+        
+        temp = list(s) 
+        ans = ""
+        
+        for i in range(len(open)):
+            temp[open[len(open) - i - 1]: close[i] + 1] = temp[open[len(open) - i - 1]: close[i] + 1][::-1]
+        
+        for i in temp:
+            if i != '(' and i != ')':
+                ans += i
+        
+        return ans
+'''

@@ -1,0 +1,41 @@
+class Solution:
+    def maxFreq(self, word: str, rep: int, minL: int, maxL: int) -> int:
+        sub = []
+        count = {}
+        for i in range (len(word) - minL + 1):
+            if len(set(word[i: i + minL])) <= rep:
+                sub.append(word[i: i + minL])
+
+        for i in sub:
+            if i in count:
+                count[i] = count[i] + 1
+            else:
+                count[i] = 1   
+        if count:
+            return max(count.values())
+        else:
+            return 0
+'''
+class Solution:
+    def myCount (self, s, sub, l):
+        ans = 0
+        for i in range (len(s) - l + 1):
+            if s[i:i + l] == sub:
+                ans += 1
+        
+        return ans
+
+    def maxFreq(self, word: str, rep: int, minL: int, maxL: int) -> int:
+        ct = 0
+
+        for i in range (len(word) - minL + 1):
+            substr = word[i: i + minL]
+
+            if len(set(substr)) <= rep:
+                
+                c = self.myCount(word, substr, minL)
+                ct = max(c, ct)
+        
+        return ct
+
+'''

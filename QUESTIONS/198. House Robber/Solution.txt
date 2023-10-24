@@ -1,0 +1,23 @@
+198. House Robber
+
+class Solution:
+    def helper (self, nums, i, dp):
+        if i >= len(nums):
+            return 0
+        if i == len(nums) - 1:
+            return nums[i]
+        
+        if dp[i] != -1:
+            return dp[i]
+        
+        rc =  nums[i] + self.helper(nums, i + 2, dp)
+        sc = self.helper(nums, i + 1, dp)
+        
+        dp[i] = max(rc, sc)
+        return max(rc, sc)
+
+    def rob(self, nums: List[int]) -> int:
+        dp = [-1] * (len(nums) + 1)
+
+        return self.helper(nums, 0, dp)
+

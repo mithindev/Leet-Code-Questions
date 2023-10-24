@@ -1,0 +1,31 @@
+322. Coin Change
+
+class Solution:
+    def helper(self, coins, amount, dp):
+        # BASE CASE
+        if amount == 0:
+            return 0
+        if amount < 0:
+            return 10000000
+        
+        if dp[amount] != 0:
+            return dp[amount]
+        
+        minimum = 10000000
+
+        for i in coins:
+            ans = self.helper(coins, amount - i, dp)
+            if ans != 10000000:
+                minimum = min(minimum, ans + 1)
+        
+        dp[amount] = minimum
+        return minimum  
+
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [0] * (amount + 1)
+        
+        ans = self.helper(coins, amount, dp)
+        if ans != 10000000:
+            return ans
+        else:
+            return -1

@@ -1,0 +1,24 @@
+823. Binary Trees With Factors
+
+# class Node:
+#     def __init__(self, key):
+#         self.key = key
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def numFactoredBinaryTrees(self, arr: List[int]) -> int:
+        dic = {x : 1 for x in arr}
+        arr.sort()
+
+        for num in arr:
+            for fact in arr:
+                if fact == num:
+                    break
+
+                if num % fact == 0 and (num // fact) in arr:
+                    dic[num] += (dic[fact] * dic[num // fact])
+        
+        return sum(dic.values()) % (pow(10, 9) + 7)
+
+        

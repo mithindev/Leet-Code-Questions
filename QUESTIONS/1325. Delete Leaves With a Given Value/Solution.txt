@@ -1,0 +1,53 @@
+class Solution:
+    def helper (self, root, target):
+        if root == None:
+            return None
+        
+        root.left = self.helper(root.left, target)
+        root.right = self.helper(root.right, target)
+
+        if root.val == target and root.left is None and root.right is None:
+            root = None 
+
+        return root          
+
+
+    def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
+        if not root:
+           return None
+            
+        return self.helper(root, target)
+
+"""
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def helper (self, root, target):
+               
+        # if root.left:
+        #     self.helper(root.left, target)
+        # if root.right:
+        #     self.helper(root.right, target)
+        if not root:
+            return None
+
+        root.left = self.helper(root.left, target)
+        root.right = self.helper(root.right, target)
+
+        #BASE CASE
+        if root.val == target and not root.left and not root.right:
+            root = None
+            return
+
+    def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
+        if not root:
+            return None
+            
+        self.helper(root, target)
+
+        return root
+"""

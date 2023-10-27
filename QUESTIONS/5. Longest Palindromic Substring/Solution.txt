@@ -1,0 +1,28 @@
+5. Longest Palindromic Substring
+
+class Solution:
+    def isPalindrome(self, word, i, j, dp):
+        # BASE CASE
+        if j <= i:
+            return True
+
+        if dp[i][j] != -1:
+            return dp[i][j]
+
+        if word[i] == word[j]:
+            dp[i][j] = self.isPalindrome(word, i + 1, j - 1, dp)
+            return dp[i][j]
+        else:
+            dp[i][j] = False
+            return False
+
+    def longestPalindrome(self, word: str) -> str:
+        dp = [[-1 for _ in range(len(word))] for _ in range(len(word))]
+        ans = ""
+
+        for i in range(len(word)):
+            for j in range(len(word) - 1, i - 1, -1):
+                if self.isPalindrome(word, i, j, dp) and (j - i + 1) > len(ans):
+                    ans = word[i:j+1]
+
+        return ans

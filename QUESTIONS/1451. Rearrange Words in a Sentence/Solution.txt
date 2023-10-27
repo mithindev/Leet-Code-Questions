@@ -1,0 +1,16 @@
+1451. Rearrange Words in a Sentence
+
+class Solution:
+    def arrangeWords(self, text: str) -> str:
+        arr = text.lower().split()
+        fin = ""
+
+        ans = sorted(arr, key=lambda x: len(x))
+
+        for i in ans:
+            fin = fin + i + ' '
+
+        fin = fin.strip()
+        fin = fin.capitalize()
+
+        return fin

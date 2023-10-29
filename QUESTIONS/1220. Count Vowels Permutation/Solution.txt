@@ -1,0 +1,59 @@
+Intuition
+The problem involves counting the number of strings of length n formed using the vowels 'a', 'e', 'i', 'o', and 'u' with certain constraints. To solve this problem, we can use a recursive approach with memoization.
+
+Approach
+We define a recursive function helper that takes a character ch and an integer n as its arguments. This function represents the number of strings of length n that can be formed starting with the character ch. We use memoization to store the results for different combinations of ch and n to avoid redundant calculations.
+
+The base case of the recursion is when n is 0, in which case we return 1, as there is only one way to form an empty string.
+
+For each character ch, we consider the possible next characters based on the rules given in the problem. We recursively call the helper function for each possible next character and accumulate the results.
+
+The countVowelPermutation function iterates through all the vowel characters ('a', 'e', 'i', 'o', 'u') and calculates the total number of strings of length n that can be formed starting with each character. It uses the memoization dictionary dp to store and retrieve previously computed results.
+
+Finally, we return the result modulo (10^9 + 7) to avoid integer overflow.
+
+Complexity
+Time complexity: The time complexity of this solution is O(5n), which simplifies to O(n), as we have five possible characters to choose from at each step, and we perform memoized calculations for each combination of ch and n.
+
+Space complexity: The space complexity is also O(n), as the memoization dictionary dp stores results for different combinations of ch and n.
+
+Code
+class Solution:
+    def helper(self, ch, n, dp):
+        # Base Case
+        if n == 0:
+            return 1
+        
+        if (ch, n) in dp:
+            return dp[(ch, n)]
+
+        ans = 0
+        if ch == 'a':
+            ans += self.helper('e', n - 1, dp)
+
+        elif ch == 'e':
+            ans += self.helper('a', n - 1, dp)
+            ans += self.helper('i', n - 1, dp)
+
+        elif ch == 'i':
+            for x in "aeou":
+                ans += self.helper(x, n - 1, dp)
+        
+        elif ch == 'o':
+            ans += self.helper('i', n - 1, dp)
+            ans += self.helper('u', n - 1, dp)
+        
+        elif ch == 'u':
+            ans += self.helper('a', n - 1, dp)
+        
+        dp[(ch, n)] = ans 
+        return ans
+
+    def countVowelPermutation(self, n: int) -> int:
+        result = 0
+        dp = {}
+        
+        for ch in "aeiou":
+            result += self.helper(ch, n - 1, dp)
+        
+        return result % (pow(10,9) + 7)

@@ -1,0 +1,34 @@
+501. Find Mode in Binary Search Tree
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+
+        d = {}
+        Q = [root]
+
+        while Q:
+            p = Q.pop(0)
+
+            if p.val not in d:
+                d[p.val] = 1
+            else:
+                d[p.val] += 1
+
+            if p.left:
+                Q.append(p.left)
+            if p.right:
+                Q.append(p.right)
+
+        t = max(d.values())
+        ans = [key for key, value in d.items() if value == t]
+
+        return ans

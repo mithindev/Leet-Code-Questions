@@ -1,0 +1,29 @@
+1347. Minimum Number of Steps to Make Two Strings Anagram
+
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        countS = {}
+        countT = {}
+
+        for ch in s:
+            if ch not in countS:
+                countS[ch] = 1
+            else:
+                countS[ch] += 1
+
+        for ch in t:
+            if ch not in countT:
+                countT[ch] = 1
+            else:
+                countT[ch] += 1
+
+        ans = 0
+        for ch, count in countS.items():
+            if ch in countT:
+                freq = countT[ch]
+                if count > freq:
+                    ans += count - freq
+            else:
+                ans += count - 0
+
+        return ans

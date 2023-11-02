@@ -1,0 +1,14 @@
+458. Poor Pigs
+
+class Solution:
+    def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -> int:
+        if buckets == 1:
+            return 0
+
+        trial = minutesToTest // minutesToDie
+        p = 1
+
+        while (pow(trial + 1, p) < buckets):
+            p += 1
+        
+        return p

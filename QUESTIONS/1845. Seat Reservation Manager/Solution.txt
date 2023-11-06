@@ -1,0 +1,39 @@
+1845. Seat Reservation Manager
+
+class SeatManager:
+
+    def __init__(self, n: int):
+        self.seats = [i for i in range(1, n + 1)]
+
+    def reserve(self) -> int:
+        return heapq.heappop(self.seats)
+
+    def unreserve(self, seatNumber: int) -> None:
+        heapq.heappush(self.seats, seatNumber)
+            
+
+
+# Your SeatManager object will be instantiated and called as such:
+# obj = SeatManager(n)
+# param_1 = obj.reserve()
+# obj.unreserve(seatNumber)
+
+
+"""
+BRUTE FORCE APPROACH:-
+
+class SeatManager:
+
+    def __init__(self, n: int):
+        self.seats = [-1] * n
+
+    def reserve(self) -> int:
+        for i in range(len(self.seats)):
+            if self.seats[i] == -1:
+                self.seats[i] = 0
+                return i + 1
+
+    def unreserve(self, seatNumber: int) -> None:
+        if 1 <= seatNumber <= len(self.seats):
+            self.seats[seatNumber - 1] = -1
+"""

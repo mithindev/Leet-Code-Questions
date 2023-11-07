@@ -1,0 +1,18 @@
+class Solution:
+    def checkValid(self, matrix: List[List[int]]) -> bool:
+        n = len(matrix)
+        checkSet = set(i for i in range(1, n + 1))
+
+        for row in matrix:
+            if set(row) != checkSet:
+                return False
+        
+        for col in range(n):
+            lst = set()
+            for row in range(n):
+                lst.add(matrix[row][col]) 
+
+            if lst != checkSet:
+                return False
+        
+        return True

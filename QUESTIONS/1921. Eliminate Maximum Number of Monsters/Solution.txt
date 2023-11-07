@@ -1,0 +1,29 @@
+1921. Eliminate Maximum Number of Monsters
+
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        n = len(dist)
+        time = [dist[i] / speed[i] for i in range (len(dist))]
+        time.sort()
+
+        # count = 1
+        
+        # for i in range (1, n):
+        #     if time[i] == time[i - 1]:
+        #         # count += 1
+        #         return count
+            
+        #     else:
+        #         count += 1
+        
+        # return count
+
+        t = 1
+
+        for i in time[1:]:
+            if t >= i:
+                return t
+            
+            t += 1
+        
+        return t

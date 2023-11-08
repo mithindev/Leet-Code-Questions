@@ -1,0 +1,22 @@
+283. Move Zeroes
+
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+
+        for i in range(nums.count(0)):
+            nums.remove(0)
+            nums.append(0)
+    
+
+
+"""
+BRUTE FORCE:-
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        n = len(nums)
+
+        for i in range(n):
+            for j in range (1, n):
+                if (nums[j - 1] == 0):
+                    nums[j - 1], nums[j] = nums[j], nums[j - 1]
+"""

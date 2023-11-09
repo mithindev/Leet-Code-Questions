@@ -1,0 +1,40 @@
+1759. Count Number of Homogenous Substrings
+
+class Solution:
+    def helper (self, s):
+        n = len(s)
+
+        return (0.5 * n * (n + 1)) % (pow(10, 9) + 7)
+    
+    def countHomogenous(self, word: str) -> int:
+        lst = {}
+        ans = 0
+
+        s = 0
+        e = 1
+        n = len(word)
+
+        while (e < n and s < n):
+            if word[e] == word[s]:
+                e += 1
+            else:
+                temp = word[s: e]
+                if temp not in lst:
+                    lst[temp] = 1
+                else:
+                    lst[temp] += 1
+                
+                s = e
+                e = s + 1
+            
+        temp = word[s: e]
+        if temp not in lst:
+            lst[temp] = 1
+        else:
+            lst[temp] += 1
+
+        # print(lst)
+        for key, val in lst.items():
+            ans += self.helper(key) * val
+        
+        return int(ans)

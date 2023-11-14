@@ -1,0 +1,36 @@
+410. Split Array Largest Sum
+
+class Solution:
+    def isPossible(self, weights, mid, days):
+        sum = 0
+        day = 1
+
+        for weight in weights:
+            if sum + weight <= mid:
+                sum += weight
+            else:
+                day += 1
+                if day > days or mid < weight:
+                    return False
+                sum = weight
+        return True
+
+    def splitArray(self, weights: List[int], days: int) -> int:
+        s = 0
+        e = 0
+        ans = 0
+
+        for weight in weights:
+            e += weight
+        
+        while (s <= e):
+            mid = s + (e - s) // 2
+
+            if self.isPossible(weights, mid, days):
+                ans = mid
+                e = mid - 1
+            else:
+                s = mid + 1
+        
+        return ans
+        

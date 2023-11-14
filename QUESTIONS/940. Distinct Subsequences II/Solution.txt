@@ -1,0 +1,77 @@
+940. Distinct Subsequences II
+
+class Solution:
+    def distinctSubseqII(self, s: str) -> int:
+        n = len(s)
+        dp = [0] * (n + 1)
+        dp[0] = 1
+        
+        prev = {}
+
+        for i in range(1, n + 1):
+            dp[i] = dp[i - 1] * 2
+
+            if s[i - 1] in prev:
+                pIndex = prev[s[i - 1]]
+                dp[i] = (dp[i] - dp[pIndex - 1])
+
+            prev[s[i - 1]] = i
+
+        return (dp[n] - 1) % ((10 ** 9) + 7) 
+       
+
+
+"""
+BRUTE-FORCE SOLUTION - 2:-
+
+class Solution:
+    def findSubSeq(self, word, p, ans, dp):
+        if not word:
+            ans.add(p)
+            return ans
+
+        if (word, p) in dp:
+            return dp[(word, p)]
+
+        ch = word[0]
+        ans.add(p + ch)
+
+        inc = self.findSubSeq(word[1:], p + ch, ans, dp)
+        exc = self.findSubSeq(word[1:], p, ans, dp)
+
+        dp[(word, p)] = ans.copy()
+
+        return ans
+
+    def distinctSubseqII(self, s: str) -> int:
+        dp = {}
+
+        subSeq = self.findSubSeq(s, "", set(), dp)
+
+        return len(subSeq) % (pow(10, 9) + 7) - 1
+"""
+
+"""
+BRUTE-FORCE SOLUTION:-
+
+class Solution:
+    def findSubSeq(self, word, p, ans):
+        if not word:
+            ans.add(p)
+            return ans
+
+        ch = word[0]
+        ans.add(p + ch)
+        self.findSubSeq(word[1:], p + ch, ans)
+        self.findSubSeq(word[1:], p, ans)
+        print(ans)
+        return ans
+        
+    def distinctSubseqII(self, s: str) -> int:
+        subSeq = self.findSubSeq(s, "", set())
+
+        return len(subSeq) % (pow(10, 9) + 7) - 1
+
+solution = Solution()
+print(solution.distinctSubseqII("aaa"))
+"""

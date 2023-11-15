@@ -1,0 +1,39 @@
+1552. Magnetic Force Between Two Balls
+
+class Solution:
+    def isPossible(self, position, mid, m, n):
+        count = 1
+        b1 = 0
+        b2 = 1
+        while (b1 < n and b2 < n):
+            if abs(position[b2] - position[b1]) >= mid:
+                count += 1
+                b1 = b2
+                b2 = b1 + 1
+            else:
+                b2 += 1
+        
+        if count < m:
+            return False
+        else: 
+            return True
+
+
+    def maxDistance(self, position: List[int], m: int) -> int:
+        position.sort()
+        n = len(position)
+        s = 0
+        e = max(position) - min(position)
+        ans = 0
+
+        while(s <= e):
+            mid = s + (e - s) // 2
+
+            if self.isPossible(position, mid, m, n):
+                ans = mid
+                s = mid + 1
+            else:
+                e = mid - 1
+        
+        return ans
+        

@@ -1,312 +1,379 @@
-# # # # # # # # # # # # # # # # from typing import List
+# # # # # # # # # # # # # # # # # # from typing import List
 
 
-# # # # # # # # # # # # # # # # class Solution:
-# # # # # # # # # # # # # # # #     def helper(self, coins, amount):
-# # # # # # # # # # # # # # # #         # BASE CASE
-# # # # # # # # # # # # # # # #         if amount == 0:
-# # # # # # # # # # # # # # # #             return 0
-# # # # # # # # # # # # # # # #         if amount < 0:
-# # # # # # # # # # # # # # # #             return 10000000
+# # # # # # # # # # # # # # # # # # class Solution:
+# # # # # # # # # # # # # # # # # #     def helper(self, coins, amount):
+# # # # # # # # # # # # # # # # # #         # BASE CASE
+# # # # # # # # # # # # # # # # # #         if amount == 0:
+# # # # # # # # # # # # # # # # # #             return 0
+# # # # # # # # # # # # # # # # # #         if amount < 0:
+# # # # # # # # # # # # # # # # # #             return 10000000
         
-# # # # # # # # # # # # # # # #         minimum = 10000000
+# # # # # # # # # # # # # # # # # #         minimum = 10000000
 
-# # # # # # # # # # # # # # # #         for i in coins:
-# # # # # # # # # # # # # # # #             ans = self.helper(coins, amount - i)
-# # # # # # # # # # # # # # # #             if ans != 10000000:
-# # # # # # # # # # # # # # # #                 minimum = min(minimum, ans + 1)
+# # # # # # # # # # # # # # # # # #         for i in coins:
+# # # # # # # # # # # # # # # # # #             ans = self.helper(coins, amount - i)
+# # # # # # # # # # # # # # # # # #             if ans != 10000000:
+# # # # # # # # # # # # # # # # # #                 minimum = min(minimum, ans + 1)
         
-# # # # # # # # # # # # # # # #         return minimum  
+# # # # # # # # # # # # # # # # # #         return minimum  
 
-# # # # # # # # # # # # # # # #     def coinChange(self, coins: List[int], amount: int) -> int:
+# # # # # # # # # # # # # # # # # #     def coinChange(self, coins: List[int], amount: int) -> int:
         
-# # # # # # # # # # # # # # # #         return self.helper(coins, amount)
+# # # # # # # # # # # # # # # # # #         return self.helper(coins, amount)
 
 
-# # # # # # # # # # # # # # # # solution = Solution()
-# # # # # # # # # # # # # # # # print(solution.coinChange([1, 2, 5], 11))
+# # # # # # # # # # # # # # # # # # solution = Solution()
+# # # # # # # # # # # # # # # # # # print(solution.coinChange([1, 2, 5], 11))
 
 
-# # # # # # # # # # # # # # # # class Solution:
-# # # # # # # # # # # # # # # #     def helper(self, n, row):
-# # # # # # # # # # # # # # # #         ans = row
+# # # # # # # # # # # # # # # # # # class Solution:
+# # # # # # # # # # # # # # # # # #     def helper(self, n, row):
+# # # # # # # # # # # # # # # # # #         ans = row
 
-# # # # # # # # # # # # # # # #         # BASE CASE
-# # # # # # # # # # # # # # # #         if n == 0:
-# # # # # # # # # # # # # # # #             return ans
+# # # # # # # # # # # # # # # # # #         # BASE CASE
+# # # # # # # # # # # # # # # # # #         if n == 0:
+# # # # # # # # # # # # # # # # # #             return ans
 
-# # # # # # # # # # # # # # # #         for i in row:
-# # # # # # # # # # # # # # # #             if i == '0':
-# # # # # # # # # # # # # # # #                 ans += '1'
-# # # # # # # # # # # # # # # #             else:
-# # # # # # # # # # # # # # # #                 ans += '0'
+# # # # # # # # # # # # # # # # # #         for i in row:
+# # # # # # # # # # # # # # # # # #             if i == '0':
+# # # # # # # # # # # # # # # # # #                 ans += '1'
+# # # # # # # # # # # # # # # # # #             else:
+# # # # # # # # # # # # # # # # # #                 ans += '0'
         
-# # # # # # # # # # # # # # # #         return self.helper(n - 1, ans)
+# # # # # # # # # # # # # # # # # #         return self.helper(n - 1, ans)
     
-# # # # # # # # # # # # # # # #     def kthGrammar(self, n: int, k: int) -> int:
-# # # # # # # # # # # # # # # #         ans = self.helper(n, '0')
+# # # # # # # # # # # # # # # # # #     def kthGrammar(self, n: int, k: int) -> int:
+# # # # # # # # # # # # # # # # # #         ans = self.helper(n, '0')
 
-# # # # # # # # # # # # # # # #         return int(ans[k])
+# # # # # # # # # # # # # # # # # #         return int(ans[k])
 
-# # # # # # # # # # # # # # # # solution = Solution()
-# # # # # # # # # # # # # # # # print(solution.kthGrammar(1, '0'))
+# # # # # # # # # # # # # # # # # # solution = Solution()
+# # # # # # # # # # # # # # # # # # print(solution.kthGrammar(1, '0'))
+
+
+# # # # # # # # # # # # # # # # # class Solution:
+# # # # # # # # # # # # # # # # #     def helper(self, n, row):
+# # # # # # # # # # # # # # # # #         ans = row
+
+# # # # # # # # # # # # # # # # #         # BASE CASE
+# # # # # # # # # # # # # # # # #         if n == 0:
+# # # # # # # # # # # # # # # # #             return ans
+
+# # # # # # # # # # # # # # # # #         for i in row:
+# # # # # # # # # # # # # # # # #             if i == '0':
+# # # # # # # # # # # # # # # # #                 ans += '1'
+# # # # # # # # # # # # # # # # #             else:
+# # # # # # # # # # # # # # # # #                 ans += '0'
+        
+# # # # # # # # # # # # # # # # #         return self.helper(n - 1, ans)
+    
+# # # # # # # # # # # # # # # # #     def kthGrammar(self, n: int, k: int) -> int:
+# # # # # # # # # # # # # # # # #         #BASE CASE
+# # # # # # # # # # # # # # # # #         if n == 0 or k == 1:
+# # # # # # # # # # # # # # # # #             return 0
+
+# # # # # # # # # # # # # # # # #         mid = pow(2, n - 1) // 2
+
+# # # # # # # # # # # # # # # # #         ans = 0
+
+# # # # # # # # # # # # # # # # #         if k <= mid:
+# # # # # # # # # # # # # # # # #             ans = self.kthGrammar(n - 1, k)
+# # # # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # # # #             ans = 1 ^ self.kthGrammar(n - 1, k - mid)
+
+# # # # # # # # # # # # # # # # #         return ans 
+
+
+
+# # # # # # # # # # # # # # # # # solution = Solution()
+# # # # # # # # # # # # # # # # # n = 2
+# # # # # # # # # # # # # # # # # k = 2
+# # # # # # # # # # # # # # # # # result = solution.kthGrammar(n, k)
+# # # # # # # # # # # # # # # # # print(result)
+
+
+# # # # # # # # # # # # # # # # # for i in range (5, 1 - 1, -1):
+# # # # # # # # # # # # # # # # #   print(i, ',') 
+
+
+# # # # # # # # # # # # # # # # # # class Solution:
+# # # # # # # # # # # # # # # # # #     def isPalindrome(self, word, i, j, dp):
+# # # # # # # # # # # # # # # # # #         # BASE CASE
+# # # # # # # # # # # # # # # # # #         if j <= i:
+# # # # # # # # # # # # # # # # # #             return True
+
+# # # # # # # # # # # # # # # # # #         if dp[i][j] != -1:
+# # # # # # # # # # # # # # # # # #             return dp[i][j]
+
+# # # # # # # # # # # # # # # # # #         if word[i] == word[j]:
+# # # # # # # # # # # # # # # # # #             dp[i][j] = self.isPalindrome(word, i + 1, j - 1, dp)
+# # # # # # # # # # # # # # # # # #             return dp[i][j]
+# # # # # # # # # # # # # # # # # #         else:
+# # # # # # # # # # # # # # # # # #             dp[i][j] = False
+# # # # # # # # # # # # # # # # # #             return False
+
+# # # # # # # # # # # # # # # # # #     def longestPalindrome(self, word: str) -> str:
+# # # # # # # # # # # # # # # # # #         dp = [[-1 for _ in range(len(word))] for _ in range(len(word))]
+# # # # # # # # # # # # # # # # # #         ans = ""
+
+# # # # # # # # # # # # # # # # # #         for i in range(len(word)):
+# # # # # # # # # # # # # # # # # #             for j in range(len(word) - 1, i - 1, -1):
+# # # # # # # # # # # # # # # # # #                 if self.isPalindrome(word, i, j, dp) and (j - i + 1) > len(ans):
+# # # # # # # # # # # # # # # # # #                     ans = word[i:j+1]
+
+# # # # # # # # # # # # # # # # # #         return ans
+
+# # # # # # # # # # # # # # # # # solution = Solution()
+# # # # # # # # # # # # # # # # # print(solution.longestPalindrome("babad"))
+
+# # # # # # # # # # # # # # # # # Definition for a binary tree node.
+# # # # # # # # # # # # # # # # # class TreeNode:
+# # # # # # # # # # # # # # # # #     def __init__(self, val=0, left=None, right=None):
+# # # # # # # # # # # # # # # # #         self.val = val
+# # # # # # # # # # # # # # # # #         self.left = left
+# # # # # # # # # # # # # # # # #         self.right = right
+
+# # # # # # # # # # # # # # # # class Solution:
+# # # # # # # # # # # # # # # #     def helper(self, parent, node, target):
+# # # # # # # # # # # # # # # #         # BASE CASE
+# # # # # # # # # # # # # # # #         if not node:
+# # # # # # # # # # # # # # # #             return None
+
+# # # # # # # # # # # # # # # #         node.left = self.helper(node, node.left, target)
+# # # # # # # # # # # # # # # #         node.right = self.helper(node, node.right, target)
+
+# # # # # # # # # # # # # # # #         if not node.left and not node.right and node.val == target:
+# # # # # # # # # # # # # # # #             return None
+
+# # # # # # # # # # # # # # # #         return node
+
+# # # # # # # # # # # # # # # #     def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
+# # # # # # # # # # # # # # # #         if not root:
+# # # # # # # # # # # # # # # #             return None
+
+# # # # # # # # # # # # # # # #         root = self.helper(None, root, target)
+
+# # # # # # # # # # # # # # # #         return root
+
+
+# # # # # # # # # # # # # # # from typing import List
 
 
 # # # # # # # # # # # # # # # class Solution:
-# # # # # # # # # # # # # # #     def helper(self, n, row):
-# # # # # # # # # # # # # # #         ans = row
+# # # # # # # # # # # # # # #     def helper(self, num):
+# # # # # # # # # # # # # # #         ans = 2
+# # # # # # # # # # # # # # #         _sum = 1 + num
 
-# # # # # # # # # # # # # # #         # BASE CASE
-# # # # # # # # # # # # # # #         if n == 0:
-# # # # # # # # # # # # # # #             return ans
+# # # # # # # # # # # # # # #         for i in range(2, int(num ** 0.5) + 1):
+# # # # # # # # # # # # # # #             if num % i == 0:
+# # # # # # # # # # # # # # #                 ans += 1
+# # # # # # # # # # # # # # #                 _sum += i
+# # # # # # # # # # # # # # #             if ans > 4:
+# # # # # # # # # # # # # # #                 return 0
 
-# # # # # # # # # # # # # # #         for i in row:
-# # # # # # # # # # # # # # #             if i == '0':
-# # # # # # # # # # # # # # #                 ans += '1'
-# # # # # # # # # # # # # # #             else:
-# # # # # # # # # # # # # # #                 ans += '0'
-        
-# # # # # # # # # # # # # # #         return self.helper(n - 1, ans)
-    
-# # # # # # # # # # # # # # #     def kthGrammar(self, n: int, k: int) -> int:
-# # # # # # # # # # # # # # #         #BASE CASE
-# # # # # # # # # # # # # # #         if n == 0 or k == 1:
+# # # # # # # # # # # # # # #         if ans == 4:
+# # # # # # # # # # # # # # #             return _sum
+# # # # # # # # # # # # # # #         else:
 # # # # # # # # # # # # # # #             return 0
 
-# # # # # # # # # # # # # # #         mid = pow(2, n - 1) // 2
-
+# # # # # # # # # # # # # # #     def sumFourDivisors(self, nums: List[int]) -> int:
 # # # # # # # # # # # # # # #         ans = 0
+# # # # # # # # # # # # # # #         for i in nums:
+# # # # # # # # # # # # # # #             ans += self.helper(i)
 
-# # # # # # # # # # # # # # #         if k <= mid:
-# # # # # # # # # # # # # # #             ans = self.kthGrammar(n - 1, k)
-# # # # # # # # # # # # # # #         else:
-# # # # # # # # # # # # # # #             ans = 1 ^ self.kthGrammar(n - 1, k - mid)
-
-# # # # # # # # # # # # # # #         return ans 
-
-
-
-# # # # # # # # # # # # # # # solution = Solution()
-# # # # # # # # # # # # # # # n = 2
-# # # # # # # # # # # # # # # k = 2
-# # # # # # # # # # # # # # # result = solution.kthGrammar(n, k)
-# # # # # # # # # # # # # # # print(result)
-
-
-# # # # # # # # # # # # # # # for i in range (5, 1 - 1, -1):
-# # # # # # # # # # # # # # #   print(i, ',') 
-
-
-# # # # # # # # # # # # # # # # class Solution:
-# # # # # # # # # # # # # # # #     def isPalindrome(self, word, i, j, dp):
-# # # # # # # # # # # # # # # #         # BASE CASE
-# # # # # # # # # # # # # # # #         if j <= i:
-# # # # # # # # # # # # # # # #             return True
-
-# # # # # # # # # # # # # # # #         if dp[i][j] != -1:
-# # # # # # # # # # # # # # # #             return dp[i][j]
-
-# # # # # # # # # # # # # # # #         if word[i] == word[j]:
-# # # # # # # # # # # # # # # #             dp[i][j] = self.isPalindrome(word, i + 1, j - 1, dp)
-# # # # # # # # # # # # # # # #             return dp[i][j]
-# # # # # # # # # # # # # # # #         else:
-# # # # # # # # # # # # # # # #             dp[i][j] = False
-# # # # # # # # # # # # # # # #             return False
-
-# # # # # # # # # # # # # # # #     def longestPalindrome(self, word: str) -> str:
-# # # # # # # # # # # # # # # #         dp = [[-1 for _ in range(len(word))] for _ in range(len(word))]
-# # # # # # # # # # # # # # # #         ans = ""
-
-# # # # # # # # # # # # # # # #         for i in range(len(word)):
-# # # # # # # # # # # # # # # #             for j in range(len(word) - 1, i - 1, -1):
-# # # # # # # # # # # # # # # #                 if self.isPalindrome(word, i, j, dp) and (j - i + 1) > len(ans):
-# # # # # # # # # # # # # # # #                     ans = word[i:j+1]
-
-# # # # # # # # # # # # # # # #         return ans
-
-# # # # # # # # # # # # # # # solution = Solution()
-# # # # # # # # # # # # # # # print(solution.longestPalindrome("babad"))
-
-# # # # # # # # # # # # # # # Definition for a binary tree node.
-# # # # # # # # # # # # # # # class TreeNode:
-# # # # # # # # # # # # # # #     def __init__(self, val=0, left=None, right=None):
-# # # # # # # # # # # # # # #         self.val = val
-# # # # # # # # # # # # # # #         self.left = left
-# # # # # # # # # # # # # # #         self.right = right
-
-# # # # # # # # # # # # # # class Solution:
-# # # # # # # # # # # # # #     def helper(self, parent, node, target):
-# # # # # # # # # # # # # #         # BASE CASE
-# # # # # # # # # # # # # #         if not node:
-# # # # # # # # # # # # # #             return None
-
-# # # # # # # # # # # # # #         node.left = self.helper(node, node.left, target)
-# # # # # # # # # # # # # #         node.right = self.helper(node, node.right, target)
-
-# # # # # # # # # # # # # #         if not node.left and not node.right and node.val == target:
-# # # # # # # # # # # # # #             return None
-
-# # # # # # # # # # # # # #         return node
-
-# # # # # # # # # # # # # #     def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
-# # # # # # # # # # # # # #         if not root:
-# # # # # # # # # # # # # #             return None
-
-# # # # # # # # # # # # # #         root = self.helper(None, root, target)
-
-# # # # # # # # # # # # # #         return root
-
-
-# # # # # # # # # # # # # from typing import List
-
-
-# # # # # # # # # # # # # class Solution:
-# # # # # # # # # # # # #     def helper(self, num):
-# # # # # # # # # # # # #         ans = 2
-# # # # # # # # # # # # #         _sum = 1 + num
-
-# # # # # # # # # # # # #         for i in range(2, int(num ** 0.5) + 1):
-# # # # # # # # # # # # #             if num % i == 0:
-# # # # # # # # # # # # #                 ans += 1
-# # # # # # # # # # # # #                 _sum += i
-# # # # # # # # # # # # #             if ans > 4:
-# # # # # # # # # # # # #                 return 0
-
-# # # # # # # # # # # # #         if ans == 4:
-# # # # # # # # # # # # #             return _sum
-# # # # # # # # # # # # #         else:
-# # # # # # # # # # # # #             return 0
-
-# # # # # # # # # # # # #     def sumFourDivisors(self, nums: List[int]) -> int:
-# # # # # # # # # # # # #         ans = 0
-# # # # # # # # # # # # #         for i in nums:
-# # # # # # # # # # # # #             ans += self.helper(i)
-
-# # # # # # # # # # # # #         return ans
+# # # # # # # # # # # # # # #         return ans
     
 
-# # # # # # # # # # # # # solution = Solution()
-# # # # # # # # # # # # # print(solution.sumFourDivisors([21]))
+# # # # # # # # # # # # # # # solution = Solution()
+# # # # # # # # # # # # # # # print(solution.sumFourDivisors([21]))
 
 
-# # # # # # # # # # # # # print(type(bin(4)))
+# # # # # # # # # # # # # # # print(type(bin(4)))
 
-# # # # # # # # # # # # from typing import List
+# # # # # # # # # # # # # # from typing import List
+
+# # # # # # # # # # # # # # class Solution:
+# # # # # # # # # # # # # #     def sortByBits(self, arr: List[int]) -> List[int]:
+# # # # # # # # # # # # # #         ans = sorted(arr, key=lambda x: (bin(x)[2:].count('1'), x))
+# # # # # # # # # # # # # #         return ans
+
+
+# # # # # # # # # # # # # # solution = Solution()
+
+# # # # # # # # # # # # # # print(solution.sortByBits([0, 1, 2, 3, 4, 5, 6, 7]))
+
+# # # # # # # # # # # # # class Solution:
+# # # # # # # # # # # # #     def minSteps(self, s: str, t: str) -> int:
+# # # # # # # # # # # # #         count_s = {}
+# # # # # # # # # # # # #         count_t = {}
+
+# # # # # # # # # # # # #         for char in s:
+# # # # # # # # # # # # #             count_s[char] = count_s.get(char, 0) + 1
+
+# # # # # # # # # # # # #         for char in t:
+# # # # # # # # # # # # #             count_t[char] = count_t.get(char, 0) + 1
+
+# # # # # # # # # # # # #         ans = 0
+# # # # # # # # # # # # #         for char, freq_s in count_s.items():
+# # # # # # # # # # # # #             freq_t = count_t.get(char, 0)
+# # # # # # # # # # # # #             if freq_s > freq_t:
+# # # # # # # # # # # # #                 ans += freq_s - freq_t
+
+# # # # # # # # # # # # #         return ans
+
 
 # # # # # # # # # # # # class Solution:
-# # # # # # # # # # # #     def sortByBits(self, arr: List[int]) -> List[int]:
-# # # # # # # # # # # #         ans = sorted(arr, key=lambda x: (bin(x)[2:].count('1'), x))
+# # # # # # # # # # # #     def minSteps(self, s: str, t: str) -> int:
+# # # # # # # # # # # #         countS = {}
+# # # # # # # # # # # #         countT = {}
+
+# # # # # # # # # # # #         for ch in s:
+# # # # # # # # # # # #             if ch not in countS:
+# # # # # # # # # # # #                 countS[ch] = 1
+# # # # # # # # # # # #             else:
+# # # # # # # # # # # #                 countS[ch] += 1
+
+# # # # # # # # # # # #         for ch in t:
+# # # # # # # # # # # #             if ch not in countT:
+# # # # # # # # # # # #                 countT[ch] = 1
+# # # # # # # # # # # #             else:
+# # # # # # # # # # # #                 countT[ch] += 1
+
+# # # # # # # # # # # #         ans = 0
+# # # # # # # # # # # #         for ch, count in countS.items():
+# # # # # # # # # # # #             freq = countT.get(ch, 0)
+# # # # # # # # # # # #             if count > freq:
+# # # # # # # # # # # #                 ans += count - freq
+
 # # # # # # # # # # # #         return ans
 
 
 # # # # # # # # # # # # solution = Solution()
+# # # # # # # # # # # # print(solution.minSteps("leetcode", "practice"))
 
-# # # # # # # # # # # # print(solution.sortByBits([0, 1, 2, 3, 4, 5, 6, 7]))
+# # # # # # # # # # # from typing import List
+
 
 # # # # # # # # # # # class Solution:
-# # # # # # # # # # #     def minSteps(self, s: str, t: str) -> int:
-# # # # # # # # # # #         count_s = {}
-# # # # # # # # # # #         count_t = {}
+# # # # # # # # # # #     def getWinner(self, arr: List[int], k: int) -> int:
+# # # # # # # # # # #         n = len(arr)
+# # # # # # # # # # #         if k >= n:
+# # # # # # # # # # #             return max(arr)
+# # # # # # # # # # #         i = 0
+# # # # # # # # # # #         streak = 0
 
-# # # # # # # # # # #         for char in s:
-# # # # # # # # # # #             count_s[char] = count_s.get(char, 0) + 1
+# # # # # # # # # # #         while True:
+# # # # # # # # # # #             winner = arr[i]
+# # # # # # # # # # #             if arr[(i + 1) % n] < winner:
+# # # # # # # # # # #                 streak += 1
+# # # # # # # # # # #                 i = (i + 1) % n
+# # # # # # # # # # #                 if streak >= k:
+# # # # # # # # # # #                     return winner
+# # # # # # # # # # #             else:
+# # # # # # # # # # #                 winner = arr[(i + 1) % n]
+# # # # # # # # # # #                 streak = 1
+            
 
-# # # # # # # # # # #         for char in t:
-# # # # # # # # # # #             count_t[char] = count_t.get(char, 0) + 1
-
-# # # # # # # # # # #         ans = 0
-# # # # # # # # # # #         for char, freq_s in count_s.items():
-# # # # # # # # # # #             freq_t = count_t.get(char, 0)
-# # # # # # # # # # #             if freq_s > freq_t:
-# # # # # # # # # # #                 ans += freq_s - freq_t
-
-# # # # # # # # # # #         return ans
-
+# # # # # # # # # # # solution = Solution()
+# # # # # # # # # # # print(solution.getWinner([2,1,3,5,4,6,7], 2))
 
 # # # # # # # # # # class Solution:
-# # # # # # # # # #     def minSteps(self, s: str, t: str) -> int:
-# # # # # # # # # #         countS = {}
-# # # # # # # # # #         countT = {}
-
-# # # # # # # # # #         for ch in s:
-# # # # # # # # # #             if ch not in countS:
-# # # # # # # # # #                 countS[ch] = 1
-# # # # # # # # # #             else:
-# # # # # # # # # #                 countS[ch] += 1
-
-# # # # # # # # # #         for ch in t:
-# # # # # # # # # #             if ch not in countT:
-# # # # # # # # # #                 countT[ch] = 1
-# # # # # # # # # #             else:
-# # # # # # # # # #                 countT[ch] += 1
-
+# # # # # # # # # #     def helper (self, s):
 # # # # # # # # # #         ans = 0
-# # # # # # # # # #         for ch, count in countS.items():
-# # # # # # # # # #             freq = countT.get(ch, 0)
-# # # # # # # # # #             if count > freq:
-# # # # # # # # # #                 ans += count - freq
 
-# # # # # # # # # #         return ans
+# # # # # # # # # #         for i in s:
+# # # # # # # # # #             ans += int(i)
 
+# # # # # # # # # #         return str(ans)
+
+# # # # # # # # # #     def digitSum(self, s: str, k: int) -> str:
+# # # # # # # # # #         temp = ""
+
+# # # # # # # # # #         while(len(s) != k):
+# # # # # # # # # #             temp = self.helper(s)
+# # # # # # # # # #             s = temp
+        
+# # # # # # # # # #         return s
 
 # # # # # # # # # # solution = Solution()
-# # # # # # # # # # print(solution.minSteps("leetcode", "practice"))
-
-# # # # # # # # # from typing import List
+# # # # # # # # # # print(solution.digitSum("11111222223", 3))
 
 
 # # # # # # # # # class Solution:
-# # # # # # # # #     def getWinner(self, arr: List[int], k: int) -> int:
-# # # # # # # # #         n = len(arr)
-# # # # # # # # #         if k >= n:
-# # # # # # # # #             return max(arr)
-# # # # # # # # #         i = 0
-# # # # # # # # #         streak = 0
+# # # # # # # # #     def helper (self, s):
+# # # # # # # # #         n = len(s)
 
-# # # # # # # # #         while True:
-# # # # # # # # #             winner = arr[i]
-# # # # # # # # #             if arr[(i + 1) % n] < winner:
-# # # # # # # # #                 streak += 1
-# # # # # # # # #                 i = (i + 1) % n
-# # # # # # # # #                 if streak >= k:
-# # # # # # # # #                     return winner
+# # # # # # # # #         return (0.5 * n * (n + 1)) % (pow(10, 9) + 7)
+    
+# # # # # # # # #     def countHomogenous(self, word: str) -> int:
+# # # # # # # # #         lst = {}
+# # # # # # # # #         ans = 0
+
+# # # # # # # # #         s = 0
+# # # # # # # # #         e = 1
+# # # # # # # # #         n = len(word)
+
+# # # # # # # # #         while (e < n and s < n):
+# # # # # # # # #             if word[e] == word[s]:
+# # # # # # # # #                 e += 1
 # # # # # # # # #             else:
-# # # # # # # # #                 winner = arr[(i + 1) % n]
-# # # # # # # # #                 streak = 1
+# # # # # # # # #                 temp = word[s: e]
+# # # # # # # # #                 if temp not in lst:
+# # # # # # # # #                     lst[temp] = 1
+# # # # # # # # #                 else:
+# # # # # # # # #                     lst[temp] += 1
+                
+# # # # # # # # #                 s = e
+# # # # # # # # #                 e = s + 1
             
+# # # # # # # # #         temp = word[s: e]
+# # # # # # # # #         if temp not in lst:
+# # # # # # # # #             lst[temp] = 1
+# # # # # # # # #         else:
+# # # # # # # # #             lst[temp] += 1
+
+# # # # # # # # #         # print(lst)
+# # # # # # # # #         for key, val in lst.items():
+# # # # # # # # #             ans += self.helper(key) * val
+        
+# # # # # # # # #         return ans % (pow(10, 9) + 7)
+
 
 # # # # # # # # # solution = Solution()
-# # # # # # # # # print(solution.getWinner([2,1,3,5,4,6,7], 2))
+# # # # # # # # # print(solution.countHomogenous("zzzzz"))
 
 # # # # # # # # class Solution:
-# # # # # # # #     def helper (self, s):
-# # # # # # # #         ans = 0
+# # # # # # # #     def repeatedStringMatch(self, a: str, b: str) -> int:
+# # # # # # # #         word = a
+# # # # # # # #         count = 1
+# # # # # # # #         while True:
 
-# # # # # # # #         for i in s:
-# # # # # # # #             ans += int(i)
-
-# # # # # # # #         return str(ans)
-
-# # # # # # # #     def digitSum(self, s: str, k: int) -> str:
-# # # # # # # #         temp = ""
-
-# # # # # # # #         while(len(s) != k):
-# # # # # # # #             temp = self.helper(s)
-# # # # # # # #             s = temp
+# # # # # # # #             if len(a) < len(b):
+# # # # # # # #                 a += word
+# # # # # # # #                 count += 1
+            
+# # # # # # # #             else:
+# # # # # # # #                 if b in a:
+# # # # # # # #                     return count
+# # # # # # # #                 elif len(a) < 2*len(b):
+# # # # # # # #                     a += word
+# # # # # # # #                     count += 1
+# # # # # # # #                 else:
+# # # # # # # #                     break
         
-# # # # # # # #         return s
+# # # # # # # #         return -1
 
 # # # # # # # # solution = Solution()
-# # # # # # # # print(solution.digitSum("11111222223", 3))
-
+# # # # # # # # print(solution.repeatedStringMatch("aaaaaaaaaaaaaaaaaaaaaab", "ba"))
 
 # # # # # # # class Solution:
 # # # # # # #     def helper (self, s):
 # # # # # # #         n = len(s)
 
 # # # # # # #         return (0.5 * n * (n + 1)) % (pow(10, 9) + 7)
-    
-# # # # # # #     def countHomogenous(self, word: str) -> int:
+
+# # # # # # #     def numSub(self, word: str) -> int:
 # # # # # # #         lst = {}
 # # # # # # #         ans = 0
 
@@ -315,7 +382,7 @@
 # # # # # # #         n = len(word)
 
 # # # # # # #         while (e < n and s < n):
-# # # # # # #             if word[e] == word[s]:
+# # # # # # #             if word[e] == '1':
 # # # # # # #                 e += 1
 # # # # # # #             else:
 # # # # # # #                 temp = word[s: e]
@@ -328,241 +395,216 @@
 # # # # # # #                 e = s + 1
             
 # # # # # # #         temp = word[s: e]
-# # # # # # #         if temp not in lst:
+# # # # # # #         if '0' not in temp and temp not in lst:
 # # # # # # #             lst[temp] = 1
-# # # # # # #         else:
+# # # # # # #         elif temp in lst:
 # # # # # # #             lst[temp] += 1
 
-# # # # # # #         # print(lst)
-# # # # # # #         for key, val in lst.items():
-# # # # # # #             ans += self.helper(key) * val
+# # # # # # #         print(lst)
+# # # # # # #         # for key, val in lst.items():
+# # # # # # #         #     ans += self.helper(key) * val
         
-# # # # # # #         return ans % (pow(10, 9) + 7)
-
+# # # # # # #         # return int(ans)
 
 # # # # # # # solution = Solution()
-# # # # # # # print(solution.countHomogenous("zzzzz"))
+# # # # # # # solution.numSub("0110111")
+
+
+# # # # # # # class Solution:
+# # # # # # #     def findSubSeq(self, word, p, ans, dp):
+# # # # # # #         if not word:
+# # # # # # #             ans.add(p)
+# # # # # # #             return ans
+
+# # # # # # #         if (word, p) in dp:
+# # # # # # #             return dp[(word, p)]
+
+# # # # # # #         ch = word[0]
+# # # # # # #         ans.add(p + ch)
+
+# # # # # # #         inc = self.findSubSeq(word[1:], p + ch, ans, dp)
+# # # # # # #         exc = self.findSubSeq(word[1:], p, ans, dp)
+
+# # # # # # #         dp[(word, p)] = ans.copy()
+
+# # # # # # #         return ans
+
+# # # # # # #     def distinctSubseqII(self, s: str) -> int:
+# # # # # # #         dp = {}
+
+# # # # # # #         subSeq = self.findSubSeq(s, "", set(), dp)
+
+# # # # # # #         return len(subSeq) % (pow(10, 9) + 7) - 1
+
+# # # # # # # solution = Solution()
+# # # # # # # print(solution.distinctSubseqII("aaa"))
 
 # # # # # # class Solution:
-# # # # # #     def repeatedStringMatch(self, a: str, b: str) -> int:
-# # # # # #         word = a
-# # # # # #         count = 1
-# # # # # #         while True:
+# # # # # #     def distinctSubseqII(self, s: str) -> int:
+# # # # # #         visited = [-1] * 27
+# # # # # #         visited[0] = 1
+# # # # # #         ans = 1
 
-# # # # # #             if len(a) < len(b):
-# # # # # #                 a += word
-# # # # # #                 count += 1
-            
+# # # # # #         for ch in s:
+# # # # # #             index = ord(ch) - ord('a') + 1
+# # # # # #             if visited[index] != -1:
+# # # # # #                 ans = (2 * ans - visited[index - 1]) % (10**9 + 7)
 # # # # # #             else:
-# # # # # #                 if b in a:
-# # # # # #                     return count
-# # # # # #                 elif len(a) < 2*len(b):
-# # # # # #                     a += word
-# # # # # #                     count += 1
-# # # # # #                 else:
-# # # # # #                     break
-        
-# # # # # #         return -1
+# # # # # #                 ans = (2 * ans) % (10**9 + 7)
+# # # # # #             visited[index] = ans
 
+# # # # # #         return (ans - 1) % (10**9 + 7)
+
+# # # # # # # Example usage
 # # # # # # solution = Solution()
-# # # # # # print(solution.repeatedStringMatch("aaaaaaaaaaaaaaaaaaaaaab", "ba"))
+# # # # # # result = solution.distinctSubseqII("aaa")
+# # # # # # print(result)
 
-# # # # # class Solution:
-# # # # #     def helper (self, s):
-# # # # #         n = len(s)
+# # # # # class Solution: 
+# # # # #     def helper(self, ch, s):
+# # # # #         i1 = s.index(ch)
+# # # # #         i2 = s.rfind(ch)
 
-# # # # #         return (0.5 * n * (n + 1)) % (pow(10, 9) + 7)
+# # # # #         return [i1, i2]
 
-# # # # #     def numSub(self, word: str) -> int:
-# # # # #         lst = {}
+# # # # #     def countPalindromicSubsequence(self, s: str) -> int:
+# # # # #         chars = set(s)
 # # # # #         ans = 0
 
-# # # # #         s = 0
-# # # # #         e = 1
-# # # # #         n = len(word)
-
-# # # # #         while (e < n and s < n):
-# # # # #             if word[e] == '1':
-# # # # #                 e += 1
-# # # # #             else:
-# # # # #                 temp = word[s: e]
-# # # # #                 if temp not in lst:
-# # # # #                     lst[temp] = 1
-# # # # #                 else:
-# # # # #                     lst[temp] += 1
-                
-# # # # #                 s = e
-# # # # #                 e = s + 1
-            
-# # # # #         temp = word[s: e]
-# # # # #         if '0' not in temp and temp not in lst:
-# # # # #             lst[temp] = 1
-# # # # #         elif temp in lst:
-# # # # #             lst[temp] += 1
-
-# # # # #         print(lst)
-# # # # #         # for key, val in lst.items():
-# # # # #         #     ans += self.helper(key) * val
+# # # # #         for ch in chars:
+# # # # #             index = self.helper(ch, s)
+# # # # #             if index[0] != index[1]:
+# # # # #                 ans += len(set(s[index[0] + 1: index[1]]))
         
-# # # # #         # return int(ans)
-
-# # # # # solution = Solution()
-# # # # # solution.numSub("0110111")
-
-
-# # # # # class Solution:
-# # # # #     def findSubSeq(self, word, p, ans, dp):
-# # # # #         if not word:
-# # # # #             ans.add(p)
-# # # # #             return ans
-
-# # # # #         if (word, p) in dp:
-# # # # #             return dp[(word, p)]
-
-# # # # #         ch = word[0]
-# # # # #         ans.add(p + ch)
-
-# # # # #         inc = self.findSubSeq(word[1:], p + ch, ans, dp)
-# # # # #         exc = self.findSubSeq(word[1:], p, ans, dp)
-
-# # # # #         dp[(word, p)] = ans.copy()
-
 # # # # #         return ans
 
-# # # # #     def distinctSubseqII(self, s: str) -> int:
-# # # # #         dp = {}
-
-# # # # #         subSeq = self.findSubSeq(s, "", set(), dp)
-
-# # # # #         return len(subSeq) % (pow(10, 9) + 7) - 1
-
 # # # # # solution = Solution()
-# # # # # print(solution.distinctSubseqII("aaa"))
+# # # # # print(solution.countPalindromicSubsequence("aabca"))
+
+# # # # from typing import List
 
 # # # # class Solution:
-# # # #     def distinctSubseqII(self, s: str) -> int:
-# # # #         visited = [-1] * 27
-# # # #         visited[0] = 1
-# # # #         ans = 1
+# # # #     def isPossible(self, weights, mid, days):
+# # # #         sum = 0
+# # # #         day = 1
 
-# # # #         for ch in s:
-# # # #             index = ord(ch) - ord('a') + 1
-# # # #             if visited[index] != -1:
-# # # #                 ans = (2 * ans - visited[index - 1]) % (10**9 + 7)
+# # # #         for weight in weights:
+# # # #             if sum + weight <= mid:
+# # # #                 sum += weight
 # # # #             else:
-# # # #                 ans = (2 * ans) % (10**9 + 7)
-# # # #             visited[index] = ans
+# # # #                 day += 1
+# # # #                 if day > days or mid < weight:
+# # # #                     return False
+# # # #                 sum = weight
+# # # #         return True
 
-# # # #         return (ans - 1) % (10**9 + 7)
+# # # #     def shipWithinDays(self, weights: List[int], days: int) -> int:
+# # # #         s = 0
+# # # #         e = 0
+# # # #         ans = 0
 
-# # # # # Example usage
-# # # # solution = Solution()
-# # # # result = solution.distinctSubseqII("aaa")
-# # # # print(result)
-
-# # # class Solution: 
-# # #     def helper(self, ch, s):
-# # #         i1 = s.index(ch)
-# # #         i2 = s.rfind(ch)
-
-# # #         return [i1, i2]
-
-# # #     def countPalindromicSubsequence(self, s: str) -> int:
-# # #         chars = set(s)
-# # #         ans = 0
-
-# # #         for ch in chars:
-# # #             index = self.helper(ch, s)
-# # #             if index[0] != index[1]:
-# # #                 ans += len(set(s[index[0] + 1: index[1]]))
+# # # #         for weight in weights:
+# # # #             e += weight
         
-# # #         return ans
+# # # #         while (s <= e):
+# # # #             mid = s + (e - s) // 2
+
+# # # #             if self.isPossible(weights, mid, days):
+# # # #                 ans = mid
+# # # #                 e = mid - 1
+# # # #             else:
+# # # #                 s = mid + 1
+        
+# # # #         return ans
+
+# # # # solution = Solution()
+# # # # print(solution.shipWithinDays([1,2,3,4,5,6,7,8,9,10], 5))
+
+# # # from typing import List
+
+
+# # # class Solution:
+# # #     def maximumElementAfterDecrementingAndRearranging(self, arr: List[int]) -> int:
+# # #         n = len(arr)
+# # #         arr.sort()
+
+# # #         if arr[0] != 1 and 1 in arr:
+# # #             i = arr.index(1)
+# # #             arr[0], arr[i] = arr[i], arr[0]
+# # #         else:
+# # #             arr[0] = 1
+        
+# # #         for i in range(1, n):
+# # #             if abs(arr[i] - arr[i - 1]) > 1:
+# # #                 arr[i] = arr[i - 1] + 1
+        
+# # #         return max(arr)
+
 
 # # # solution = Solution()
-# # # print(solution.countPalindromicSubsequence("aabca"))
-
-# # from typing import List
+# # # print(solution.maximumElementAfterDecrementingAndRearranging([73,98,9]))
 
 # # class Solution:
-# #     def isPossible(self, weights, mid, days):
-# #         sum = 0
-# #         day = 1
-
-# #         for weight in weights:
-# #             if sum + weight <= mid:
-# #                 sum += weight
-# #             else:
-# #                 day += 1
-# #                 if day > days or mid < weight:
-# #                     return False
-# #                 sum = weight
-# #         return True
-
-# #     def shipWithinDays(self, weights: List[int], days: int) -> int:
-# #         s = 0
-# #         e = 0
-# #         ans = 0
-
-# #         for weight in weights:
-# #             e += weight
+# #     def countPrimes(self, n: int) -> int:
+# #         table = [True] * (n + 1)
+# #         table[0] = table[1] = False
         
-# #         while (s <= e):
-# #             mid = s + (e - s) // 2
+# #         count = 0
 
-# #             if self.isPossible(weights, mid, days):
-# #                 ans = mid
-# #                 e = mid - 1
-# #             else:
-# #                 s = mid + 1
+# #         for i in range(2, n):
+# #             if table[i]:
+# #                 count += 1
+                
+# #                 j = 2 * i
+# #                 while (j <= n):
+# #                     table[j] = False
+# #                     j += i
         
-# #         return ans
-
+# #         return count
+    
 # # solution = Solution()
-# # print(solution.shipWithinDays([1,2,3,4,5,6,7,8,9,10], 5))
-
-# from typing import List
+# # print(solution.countPrimes(10))
 
 
-# class Solution:
-#     def maximumElementAfterDecrementingAndRearranging(self, arr: List[int]) -> int:
-#         n = len(arr)
-#         arr.sort()
+# def gcd(a, b): 
+#     if a == 0: 
+#         return b 
+  
+#     return gcd(b % a, a)
 
-#         if arr[0] != 1 and 1 in arr:
-#             i = arr.index(1)
-#             arr[0], arr[i] = arr[i], arr[0]
-#         else:
-#             arr[0] = 1
-        
-#         for i in range(1, n):
-#             if abs(arr[i] - arr[i - 1]) > 1:
-#                 arr[i] = arr[i - 1] + 1
-        
-#         return max(arr)
+# print(gcd(72, 24))
 
+import math
+from typing import List
 
-# solution = Solution()
-# print(solution.maximumElementAfterDecrementingAndRearranging([73,98,9]))
 
 class Solution:
-    def countPrimes(self, n: int) -> int:
-        table = [True] * (n + 1)
-        table[0] = table[1] = False
+    def Pow(self, a, n, dp):
+        # BASE CASE:-
+        if n == 0:
+            return 1
         
-        count = 0
+        if dp[n] != -1:
+            return dp[n]
 
-        for i in range(2, n):
-            if table[i]:
-                count += 1
-                
-                j = 2 * i
-                while (j <= n):
-                    table[j] = False
-                    j += i
-        
-        return count
-    
+        if n % 2 == 1:
+            res = self.Pow(a, n // 2, dp) * self.Pow(a, n // 2, dp)
+            dp[n] = res * a
+            return dp[n]
+        else:
+            dp[n] = self.Pow(a, n // 2, dp) * self.Pow(a, n // 2, dp)
+            return dp[n]
+
+
+    def superPow(self, a: int, b: List[int]) -> int:
+        n = ""
+        for i in b:
+            n += str(i)
+        n = int(n)
+
+        dp = [-1] * (n + 1)
+
+        return self.Pow(a, n, dp)
+
 solution = Solution()
-print(solution.countPrimes(10))
-
-
+print(solution.superPow(10, [1, 0]))

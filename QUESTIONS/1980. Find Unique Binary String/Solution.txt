@@ -1,0 +1,32 @@
+1980. Find Unique Binary String
+
+class Solution:
+    def toBinary(self, num, l):
+        ans = ""
+        if num == 0:
+            for i in range(l):
+                ans += "0"            
+        
+        while(num > 0):
+            d = num % 2
+            ans = str(d) + ans
+            num = num // 2
+        
+        for i in range(l - len(ans)):
+            ans = "0" + ans
+
+        return ans
+
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        n = len(nums)
+        arr = set()
+
+        for binary in nums:
+            arr.add(int(binary, 2))
+        print(arr)
+        
+        for i in range(0, len(nums) + 1):
+            if i not in arr:
+                return self.toBinary(i, n)
+        
+        return "0"

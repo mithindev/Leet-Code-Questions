@@ -1,0 +1,33 @@
+15. 3Sum
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        ans = set()
+        count = {}
+
+        for i in nums:
+            if i not in count:
+                count[i] = 1
+            else:
+                count[i] += 1
+        
+        for i in range(n):
+            n1 = nums[i]
+            count[n1] -= 1
+            for j in range(i + 1, n):
+                n2 = nums[j]
+                count[n2] -= 1
+
+                n3 = -1 * (n1 + n2)
+                
+                if n3 in count and count[n3] > 0:
+                    lst = list([n1, n2, n3])
+                    lst.sort()
+                    ans.add(tuple(lst))
+                
+                count[n2] += 1
+            count[n1] += 1
+        
+        return [list(i) for i in ans]
+                

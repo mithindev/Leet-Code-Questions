@@ -1,0 +1,79 @@
+42. Trapping Rain Water
+
+class Solution:
+    def trap(self, arr: List[int]) -> int:
+        s = 0
+        e = len(arr) - 1
+        rMax = lMax = 0
+        ans = 0
+
+        while(s < e):
+            lMax = max(lMax, arr[s])
+            rMax = max(rMax, arr[e])
+
+            if lMax < rMax:
+                ans += lMax - arr[s]
+                s += 1
+            else:
+                ans += rMax - arr[e]
+                e -= 1
+        
+        return ans
+
+"""
+TRY - 2
+
+class Solution:
+    def trap(self, arr: List[int]) -> int:
+        n = len(arr)
+        lMax = [0] * n
+        rMax = [0] * n
+
+        tMax = 0
+
+        for i in range(n):
+            if arr[i] > tMax:
+                tMax = arr[i]
+            lMax[i] = tMax
+        
+        tMax = 0
+
+        for i in range(n - 1, -1, -1):
+            if arr[i] > tMax:
+                tMax = arr[i]
+            rMax[n - i - 1] = tMax
+        
+        print(lMax)
+        print(rMax)
+        
+        ans = 0
+
+        for i in range(n):
+            ans += (min(lMax[i], rMax[i]) - arr[i])
+        
+        return ans
+"""
+"""
+TRY - 1
+
+class Solution:
+    def trap(self, arr: List[int]) -> int:
+        n = len(arr)
+        ans = 0
+        s = 0
+        e = 0
+
+        while (arr[s] != 0):
+            s += 1
+        
+        while (s < n and e < n):
+            e = s
+            while (e < n and s < n and arr[e] >= arr[s]):
+                e += 1
+            
+            for i in range(s, e):
+                ans += (arr[s] - arr[i])
+            s = e
+        
+        return ans
+"""

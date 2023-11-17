@@ -1,0 +1,18 @@
+1877. Minimize Maximum Pair Sum in Array
+
+
+class Solution:
+    def minPairSum(self, nums: List[int]) -> int:
+        n = len(nums)
+        nums.sort()
+        ans = 0
+
+        for i in range(n // 2):
+            temp = nums[i] + nums[n - i - 1]
+            if temp > ans:
+                ans = temp
+        
+        return ans
+
+
+        

@@ -1,0 +1,32 @@
+2391. Minimum Amount of Time to Collect Garbage
+
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        n = len(garbage)
+        ans = 0
+
+        for i in travel:
+            ans += 3*i
+
+        for waste in garbage:
+            ans += len(waste)
+
+        for i in range(n - 1, 0, -1):
+            if 'M' not in garbage[i]:
+                ans -= travel[i - 1]
+            else:
+                break
+        
+        for i in range(n - 1, 0, -1):
+            if 'P' not in garbage[i]:
+                ans -= travel[i - 1]
+            else:
+                break
+        
+        for i in range(n - 1, 0, -1):
+            if 'G' not in garbage[i]:
+                ans -= travel[i - 1]
+            else:
+                break
+
+        return ans

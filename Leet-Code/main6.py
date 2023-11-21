@@ -775,22 +775,98 @@
 
 from typing import List
 
+# class Solution:
+#     def reductionOperations(self, arr: List[int]) -> int:
+#         arr.sort()
+#         n = len(arr)
+#         nums = list(set(arr))
+#         position = [0] * (len(nums) - 1)
+
+#         for i in range(1, len(nums)):
+#             position[i - 1] = arr.index(nums[i])
+
+#         ans = 0
+
+#         for i in position:
+#             ans += n - i
+
+#         return ans
+
+# solution = Solution()
+# print(solution.reductionOperations([5,1,3]))
+
+# class Solution:
+#     def helper(self, a, n):
+#         # BASE CASE:
+#         if n == 1:
+#             return a
+        
+#         if (n & 1) == 1:
+#             return a * self.helper(a * a, (n - 1) // 2)
+#         else:
+#             return self.helper(a * a, n // 2)
+
+
+#     def superPow(self, a: int, b: List[int]) -> int:
+#         n = ""
+#         for i in b:
+#             n += str(i)
+#         n = int(n)
+#         print(n&1)
+
+#         if a == 1 or n == 0:
+#             return 1
+#         base = a
+#         return self.helper(a, n)
+
+# solution = Solution()
+# print(solution.helper(2, 10))
+
 class Solution:
-    def reductionOperations(self, arr: List[int]) -> int:
-        arr.sort()
-        n = len(arr)
-        nums = list(set(arr))
-        position = [0] * (len(nums) - 1)
-
-        for i in range(1, len(nums)):
-            position[i - 1] = arr.index(nums[i])
-
+    def rev(self, num):
         ans = 0
 
-        for i in position:
-            ans += n - i
+        while(num > 0):
+            ans *= 10
+            l = num % 10
+            ans += l
+            num = num // 10
 
-        return ans
+        return ans 
 
+    def countNicePairs(self, nums: List[int]) -> int:
+        m = (10 ** 9) + 7
+        ans = 0
+        n = len(nums)
+        count = {}
+
+        for i in range(n):
+            nums[i] = nums[i] - self.rev(nums[i])
+            if nums[i] in count:
+                count[nums[i]] += 1
+            else:
+                count[nums[i]] = 1
+        print(nums)
+        print(count)
+        
+        for i in count.values():
+            if i == 1:
+                continue
+            elif i == 2:
+                ans += 1
+            else:
+                ans += ((i - 1) * (i)) >> 1
+        
+        return ans % m
+
+    
+
+    
 solution = Solution()
-print(solution.reductionOperations([5,1,3]))
+print(solution.countNicePairs([13,10,35,24,76]))
+
+
+
+
+
+        

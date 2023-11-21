@@ -1,0 +1,71 @@
+1814. Count Nice Pairs in an Array
+
+
+"""
+A BETTER APPROACH:-
+
+class Solution:
+    def rev(self, num):
+        ans = 0
+
+        while(num > 0):
+            ans *= 10
+            l = num % 10
+            ans += l
+            num = num // 10
+
+        return ans 
+
+    def countNicePairs(self, nums: List[int]) -> int:
+        m = (10 ** 9) + 7
+        ans = 0
+        n = len(nums)
+        count = {}
+
+        for i in range(n):
+            nums[i] = nums[i] - self.rev(nums[i])
+            if nums[i] in count:
+                count[nums[i]] += 1
+            else:
+                count[nums[i]] = 1
+        print(nums)
+        print(count)
+        
+        for i in count.values():
+            if i == 1:
+                continue
+            elif i == 2:
+                ans += 1
+            else:
+                ans += ((i - 1) * (i)) >> 1
+        
+        return ans % m
+"""
+
+"""
+BRUTE FORCE APPROACH:-
+
+class Solution:
+    def rev(self, num):
+        ans = 0
+
+        while(num > 0):
+            ans *= 10
+            l = num % 10
+            ans += l
+            num = num // 10
+
+        return ans 
+
+    def countNicePairs(self, nums: List[int]) -> int:
+        m = (10 ** 9) + 7
+        ans = 0
+        n = len(nums)
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                if (nums[i] + self.rev(nums[j])) == (nums[j] + self.rev(nums[i])):
+                    ans += 1
+        
+        return ans % m
+"""

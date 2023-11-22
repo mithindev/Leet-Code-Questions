@@ -1,0 +1,29 @@
+1424. Diagonal Traverse II
+
+class Solution:
+    def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
+        lst = []
+        if not nums:
+            return []
+
+        for r in range(len(nums)):
+            for c in range(len(nums[r])):
+                s = (r + c)
+                lst.append([s, r, nums[r][c]])
+        
+        lst.sort(key=lambda x: (x[0], -x[1]))
+        ans = [0] *  len(lst)
+
+        for i in range(len(lst)):
+            ans[i] = lst[i][2]
+        
+        return ans
+
+
+
+"""
+BRUTE FORCE APPROACH:-
+-> Traverse accordingly considering that it is a square matrix of the max value(row, col).
+-> Handle error for index out of bound
+"""
+        

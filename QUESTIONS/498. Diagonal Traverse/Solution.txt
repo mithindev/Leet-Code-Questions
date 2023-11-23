@@ -1,0 +1,50 @@
+498. Diagonal Traverse
+
+class Solution:
+    def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
+        if not matrix:
+            return []
+        d = {}
+
+        for r in range(len(matrix)):
+            for c in range(len(matrix[r])):
+                s = r + c
+                if (s) not in d:
+                    d[s] = []
+                
+                d[s].append(matrix[r][c])
+
+        ans = []
+        for key, lst in d.items():
+            if key&1 == 1:
+                ans.extend(lst)
+            else:
+                lst.reverse()
+                ans.extend(lst)
+
+        return ans
+
+
+"""
+TRY - 1
+
+class Solution:
+
+    def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
+        lst = []
+        if not nums:
+            return []
+
+        for r in range(len(nums)):
+            for c in range(len(nums[r])):
+                s = (r + c)
+                lst.append([s, r, c, nums[r][c]])
+        
+        lst.sort(key=lambda x: (x[0], -x[1]) if s % 2 == 1 else (x[0], -x[2]))
+        ans = [0] *  len(lst)
+
+        for i in range(len(lst)):
+            ans[i] = lst[i][2]
+        
+        return ans
+"""

@@ -1,0 +1,16 @@
+1561. Maximum Number of Coins You Can Get
+
+class Solution:
+    def maxCoins(self, arr: List[int]) -> int:
+        arr.sort()
+        ans = 0
+        print(arr)
+
+        i = 1
+
+        for i in range(len(arr) // 3, len(arr), 2):
+            ans += arr[i]
+
+        return ans
+
+        

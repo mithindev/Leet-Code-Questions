@@ -1,0 +1,24 @@
+128. Longest Consecutive Sequence
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        nums = list(set(nums))
+        nums.sort()
+        print(nums)
+        n = len(nums)
+        ans = 1
+        s = 0
+        e = 0
+
+        while s < n and e < n:
+            if e + 1 < n and nums[e + 1] - nums[e] == 1:
+                e += 1
+                if (e - s) + 1 > ans:
+                    ans = e - s + 1
+            else:
+                s = e + 1  
+                e = s
+
+        return ans

@@ -1,0 +1,93 @@
+2147. Number of Ways to Divide a Long Corridor
+
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        ans = 1
+        cSeat = 0
+        cPlant = 0
+
+        for ch in corridor:
+            if ch == 'S':
+                cSeat += 1
+            else:
+                if cSeat == 2:
+                    cPlant += 1
+            
+            if cSeat == 3:
+                ans = ans * (cPlant + 1) % (10**9 + 7)
+                cSeat = 1
+                cPlant = 0
+            
+        if cSeat != 2:
+            return 0
+            
+        return ans
+        
+
+"""
+APPROACH - 2
+
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        ans = 0
+        n = len(corridor)
+        segments = []
+        c = 0
+        cSeat = 0
+        temp = [0, 0]
+
+        for i in range(n):
+            if corridor[i] == 'S':
+                c += 1
+                cSeat += 1
+                if cSeat == 1:
+                    temp[0] = i
+                elif cSeat == 2:
+                    temp[1] = i
+                    cSeat = 0
+                    segments.append(temp)
+                    temp = [0, 0]
+        
+        if c & 1 == 1 or c == 0:
+            return 0
+        elif len(segments) == 1:
+            return 1
+        
+        for i in range(1, len(segments)):
+            # ans += (segments[i][0] - segments[i - 1][1]) % (10**9 + 7)
+            if segments[i][0] - segments[i - 1][1] > 1:
+                ans += (segments[i][0] - segments[i - 1][1]) % (10**9 + 7)
+        
+        if ans == 0:
+            return 1
+        
+        return ans % (10**9 + 7)
+"""
+
+"""
+TRY - 1
+
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        if len(corridor) <= 1:
+            return 0
+        ans = 1
+        cSeat = 0
+        cPlant = 0
+        string = ""
+
+        i = corridor.index('P')
+
+        for i in range(i, len(corridor)):
+            if corridor[i] == 'P':
+                cPlant += 1
+            elif corridor[i] == 'S':
+                cSeat += 1
+            
+            if cSeat == 2:
+                ans *= (cPlant + 1)
+                cSeat = 0
+                cPlant = 0
+            
+        return ans
+"""

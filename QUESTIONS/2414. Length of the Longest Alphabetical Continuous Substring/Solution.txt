@@ -1,0 +1,19 @@
+2414. Length of the Longest Alphabetical Continuous Substring
+
+class Solution:
+    def longestContinuousSubstring(self, string: str) -> int:
+        n = len(string)
+        ans = 0
+        s = 0
+        e = 0
+
+        while s < n and e < n:
+            if e + 1 < n and ord(string[e + 1]) - ord(string[e]) == 1:
+                e += 1
+                if (e - s) + 1 > ans:
+                    ans = e - s + 1
+            else:
+                s = e + 1  
+                e = s
+
+        return ans

@@ -1,0 +1,102 @@
+2483. Minimum Penalty for a Shop
+
+class Solution:
+    def bestClosingTime(self, s: str) -> int:
+        ans = 0
+        minimum = 0
+        n = len(s)
+
+        for i in range(0, n):
+            if s[i] == 'Y':
+                minimum -= 1
+            else:
+                minimum += 1
+            
+            if minimum < 0:
+                minimum = 0
+                ans = i + 1
+        
+        return ans
+        
+        
+"""
+TRY - 3
+
+class Solution:
+    def bestClosingTime(self, s: str) -> int:
+        n = len(s)
+        
+        cY = s.count('Y') if s else 0
+        m = cY
+        ans = 0
+
+        for i in range(1, n):
+            if s[i - 1] == 'Y':
+                temp = m - 1
+            else:
+                temp = m + 1
+            
+            if temp < m:
+                m = temp
+                ans = i
+        if s.count('N') < m:
+            ans = n
+        
+        return ans
+"""
+
+"""
+TRY - 2
+class Solution:
+    def bestClosingTime(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+        t1 = s.count('Y')
+        closed = s[:n]
+        t2 = s.count('N')
+        minimum = t1
+
+
+        for h, ch in enumerate(s):
+            if ch == 'Y':
+                t1 -= 1
+            else:
+                t2 += 1
+            
+            if h < n and (t1 + t2) < minimum:
+                minimum = t1 + t2
+                ans = h
+        
+        return ans
+
+"""
+
+
+"""
+BRUTE FORCE APPROACH:-
+
+class Solution:
+    def bestClosingTime(self, s: str) -> int:
+        n = len(s)
+        ans = sys.maxsize
+        hour = 0
+
+        j = 0
+
+        while j <= n:
+            if j == 0:
+                temp = s.count('Y')
+            elif j < n:
+                temp = s[:j].count('N') + s[j:].count('Y')
+            else:
+                temp = s.count('N')
+            
+            if temp < ans:
+                ans = temp
+                hour = j
+
+            j += 1
+        
+        return hour
+        
+"""

@@ -1,0 +1,36 @@
+1611. Minimum One Bit Operations to Make Integers Zero
+
+class Solution:
+    def minimumOneBitOperations(self, n: int) -> int:
+        if n == 0:
+            return 0
+            
+        data = [0 for i in range(0, 32)]
+        data[0] = 1
+
+        for i in range(1, 32):
+            data[i] = 2 * data[i - 1] + 1
+
+        ans = 0
+        temp = 1
+
+        # for i in range(1, len(num)):
+        #     if num[i] == '1':
+        #         ans += temp * data[len(num) - i - 1]
+        #         temp *= -1
+        
+        for i in range (30, -1, -1):
+            t = ((1 << i) & n)
+
+            if t == 0:
+                continue
+            
+            if temp > 0:
+                ans += data[i]
+            else:
+                ans -= data[i]
+            
+            temp *= -1
+
+        
+        return ans        

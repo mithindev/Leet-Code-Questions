@@ -1,0 +1,56 @@
+16. 3Sum Closest
+
+class Solution:
+    def threeSumClosest(self, arr: List[int], target: int) -> int:
+        n = len(arr)
+        arr.sort()
+        ans = 0
+        diff = float('inf') 
+
+        for i in range(n - 2):
+            s = i + 1
+            e = n - 1
+
+            while s < e:
+                sum = arr[i] + arr[s] + arr[e]
+                temp = abs(sum - target)
+
+                if temp < diff:
+                    diff = temp
+                    ans = sum
+
+                if sum < target:
+                    s += 1
+                else:
+                    e -= 1
+
+        return ans
+
+
+
+# class Solution:
+#     def threeSumClosest(self, arr: List[int], target: int) -> int:
+#         n = len(arr)
+#         arr.sort()
+#         ans = 0
+
+#         diff = 1000000
+
+#         for i in range(n - 2):
+#             s = i + 1
+#             e = n - 1
+
+#             temp = abs(arr[i] + arr[s] + arr[e] - target)
+
+#             while(s < e):
+#                 if temp == 0:
+#                     return arr[i] + arr[s] + arr[e]
+                
+#                 if temp < diff:
+#                     ans = arr[i] + arr[s] + arr[e]
+#                     diff = temp
+                
+#                 s += 1
+#                 e -= 1
+
+#         return ans

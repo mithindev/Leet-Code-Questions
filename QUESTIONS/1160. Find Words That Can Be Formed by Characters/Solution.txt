@@ -1,0 +1,26 @@
+1160. Find Words That Can Be Formed by Characters
+
+class Solution:
+    def isValid(self, word, data):
+        for ch in word:
+            if ch not in data or data[ch] == 0:
+                return False
+            data[ch] -= 1
+        
+        return True
+
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        data = {}
+
+        for ch in chars:
+            if ch not in data:
+                data[ch] = 1
+            else:
+                data[ch] += 1
+
+        ans = 0
+        for word in words:
+            if self.isValid(word, data.copy()):
+                ans += len(word)
+        
+        return ans

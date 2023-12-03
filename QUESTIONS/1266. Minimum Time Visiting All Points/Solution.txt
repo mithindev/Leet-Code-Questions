@@ -1,0 +1,27 @@
+1266. Minimum Time Visiting All Points
+
+class Solution:
+    def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
+        ans = 0
+        n = len(points)
+        px = points[0][0]
+        py = points[0][1]
+
+        for i in range(1, n):
+            x = points[i][0]
+            y = points[i][1]
+
+            h = abs(px - x)
+            v = abs(py - y)
+
+            ans += max(h, v)
+
+            px = x
+            py = y
+        
+        return ans
+
+
+
+
+        

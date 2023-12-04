@@ -1,0 +1,14 @@
+242. Valid Anagram
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+function mySort (word) {
+  return word.split("").sort().join('');
+}
+
+function isAnagram(str1, str2) {
+  return mySort(str1) === mySort(str2)
+}

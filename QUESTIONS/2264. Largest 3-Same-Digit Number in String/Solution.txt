@@ -1,0 +1,48 @@
+2264. Largest 3-Same-Digit Number in String
+
+class Solution:
+    def largestGoodInteger(self, num: str) -> str:
+        res = ""
+        n = len(num)
+        count = 1
+
+        for i in range(1, n):
+            if num[i - 1] == num[i]:
+                count += 1
+            else:
+                count = 1
+            
+            if count == 3:
+                res = max(res, num[i] * 3)
+        
+        return res
+
+
+"""
+BRUTE FORCE APPROACH:-
+
+class Solution:
+    def largestGoodInteger(self, num: str) -> str:
+        res = ""
+        n = len(num)
+        ans = -1
+        s = e = 0
+        l = 0
+
+        while (s < n and e < n - 1):
+            if e + 1 < n and num[e + 1] == num[s]:
+                l += 1
+                e += 1
+            
+            if l >= 2 and int(num[s]) > int(ans):
+                res = num[s:e + 1]
+                ans = num[s]
+
+            if (e + 1 < n and num[e + 1] != num[s]):
+                l = 0
+                s = e + 1
+                e = s
+            
+        # return "" if ans == -1 else ans
+        return res
+"""

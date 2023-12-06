@@ -1,0 +1,72 @@
+167. Two Sum II - Input Array Is Sorted
+
+class Solution:
+    def twoSum(self, arr: List[int], target: int) -> List[int]:
+        s = 0
+        e = len(arr) - 1
+
+        while (s < e):
+            if arr[s] + arr[e] == target:
+                return [s + 1, e + 1]
+            elif (arr[s] + arr[e] < target):
+                s += 1
+            else:
+                e -= 1
+
+        return [-1, -1]
+
+
+
+"""
+TRYING USING BIANRY SEARCH:-
+
+class Solution:
+    def BS (self, arr, s, e, target):
+        while (s <= e):
+            mid = s + (e - s) // 2
+
+            if arr[mid] == target:
+                return mid
+            elif arr[mid] > target:
+                e = mid - 1
+            else:
+                s = mid + 1
+        
+        return -1
+
+    def twoSum(self, arr: List[int], target: int) -> List[int]:
+        n = len(arr)
+
+        for i in range(n - 1):
+            s = i + 1
+            e = n - 1
+            t = target - arr[i]
+
+            sRes = self.BS(arr, s, e, t)
+
+            if sRes != -1:
+                return [s, sRes + 1]
+        return [-1, -1]
+"""
+
+"""
+BRUTE FORCE APPROACH:-
+
+class Solution:
+    def twoSum(self, arr: List[int], target: int) -> List[int]:
+        s = 0
+        e = len(arr) - 1
+
+        while (s < e):
+            mid = s + (e - s) // 2
+
+            if arr[s] + arr[e] == target:
+                return [s + 1, e + 1]
+            elif arr[s] + arr[e] > target:
+                e -= 1
+            else:
+                s += 1
+
+        return [-1, -1]
+        
+"""

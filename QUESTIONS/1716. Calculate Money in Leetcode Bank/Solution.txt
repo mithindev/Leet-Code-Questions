@@ -1,0 +1,34 @@
+1716. Calculate Money in Leetcode Bank
+
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        ans = 0
+        compWeeks = (n // 7) + 1
+
+        for week in range(compWeeks):
+            if week < compWeeks - 1:
+                for i in range (1, 8):
+                    ans += week + i
+            else:
+                for i in range(1, (n % 7) + 1):
+                    ans += week + i
+        return ans
+
+
+
+"""
+BRUTE FORCE APPROACH:-
+
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        ans = 0
+        compWeeks = n // 7
+        rem = n % 7
+
+        for i in range(compWeeks):
+            ans += 7 * (4 + i)
+        
+        ans += (rem/2) * (compWeeks + 1 + compWeeks + rem)
+
+        return int(ans)
+"""

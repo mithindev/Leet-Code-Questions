@@ -1,0 +1,67 @@
+1582. Special Positions in a Binary Matrix
+
+class Solution:
+    def isSpecial(self, mat, row, col, m, n):
+        for c in range(n):
+            if c == col:
+                continue
+            elif mat[row][c] == 1:
+                return False
+
+        for r in range(m):
+            if r == row:
+                continue
+            elif mat[r][col] == 1:
+                return False
+
+        return True
+
+
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        count = 0
+        row = len(mat)
+        col = len(mat[0])
+
+        for r in range(row):
+            for c in range(col):
+                if mat[r][c] == 1:
+                    if self.isSpecial(mat, r, c, row, col):
+                        count += 1
+        
+        return count
+
+
+
+"""
+BRUTE FORCE APPROACH:-
+
+class Solution:
+    def isSpecial(self, mat, row, col, m, n):
+        for c in range(n):
+            if c == row:
+                continue
+            elif mat[row][c] == 1:
+                return False
+
+        for r in range(m):
+            if r == col:
+                continue
+            elif mat[r][col] == 1:
+                return False
+
+        return True
+
+
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        count = 0
+        row = len(mat)
+        col = len(mat[0])
+
+        for r in range(row):
+            for c in range(col):
+                if mat[r][c] == 1:
+                    if self.isSpecial(mat, r, c, row, col):
+                        count += 1
+        
+        return count
+"""

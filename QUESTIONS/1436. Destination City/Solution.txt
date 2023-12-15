@@ -1,0 +1,45 @@
+1436. Destination City
+
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        l = set()
+        r = set()
+
+        # for path in paths:
+        #     if path[0] not in l:
+        #         l.add(path[0])
+        #     if path[1] not in r:
+        #         r.add(path[1])
+
+        for i in range(len(paths)):
+            if paths[i][0] not in l:
+                l.add(paths[i][0])
+            
+            if paths[i][1] not in r:
+                r.add(paths[i][1])
+
+        for i in r:
+            if i not in l:
+                return i
+
+
+
+"""
+BRUTE FORCE APPROACH:-
+
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        l = []
+        r = []
+
+        for path in paths:
+            l.append(path[0])
+            r.append(path[1])
+        
+        for i in r:
+            if i not in l:
+                return i
+
+        return ""
+
+"""        

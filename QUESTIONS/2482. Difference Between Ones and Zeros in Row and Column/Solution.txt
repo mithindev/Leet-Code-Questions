@@ -1,0 +1,78 @@
+2482. Difference Between Ones and Zeros in Row and Column
+
+class Solution:
+    def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
+        row = len(grid)
+        col = len(grid[0])
+        res = []
+
+        r1 = [0 for i in range(row)]
+        c1 = [0 for i in range(col)]
+
+        for r in range(row):
+            for c in range(col):
+                if grid[r][c] == 1:
+                    r1[r] += 1
+                    c1[c] += 1
+
+        for r in range(row):
+            for c in range(col):
+                grid[r][c] = r1[r] + c1[c] - (row - r1[r])  - (col - c1[c])
+        
+        return grid
+
+
+
+"""
+class Solution:
+    def onesMinusZeros(self, grid):
+        n = len(grid)
+        m = len(grid[0])
+        col = [0] * m
+        row = [0] * n
+
+        for i in range(n):
+            for j in range(m):
+                row[i] += 1 if grid[i][j] == 1 else -1
+                col[j] += 1 if grid[i][j] == 1 else -1
+
+        jagged_array = [[col[j] + row[i] for j in range(m)] for i in range(n)]
+
+        return jagged_array
+"""
+
+"""
+BRUTE FORCE:-
+
+class Solution:
+    def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
+        row = len(grid)
+        col = len(grid[0])
+
+        r1 = [0, 0, 0]
+        r0 = [0, 0, 0]
+        c1 = [0, 0, 0]
+        c0 = [0, 0, 0]
+
+        for r in range(row):
+            r1[r] = grid[r].count(1)
+            r0[r] = grid[r].count(0)
+
+        for c in range(col):
+            cnt1 = 0
+            cnt0 = 0
+            for r in range(row):
+                if grid[r][c] == 1:
+                    cnt1 += 1
+                else:
+                    cnt0 += 1
+            c1[c] = cnt1
+            c0[c] = cnt0
+
+        for r in range(row):
+            for c in range(col):
+                grid[r][c] = r1[r] + c1[c] - r0[r] - c0[c]
+        
+        return grid
+
+"""

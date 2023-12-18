@@ -1,0 +1,45 @@
+2704. To Be Or Not To Be
+
+var expect = function(val) {
+    return {
+        toBe: function (temp) {
+            if (temp === val) {
+                return true;
+            } else {
+                throw new Error("Not Equal")
+            }
+        },
+
+        notToBe: function (temp) {
+            if (temp !== val) {
+                return true;
+            } else {
+                throw new Error("Equal")
+            }
+        }
+    }
+}
+
+
+/*
+var expect = function(val) {
+    return {
+        function toBe(temp){
+            if (temp === val) {
+                return true;
+            } else {
+                throw new Error("Not Equal")
+            }
+        }
+
+        function notToBe(temp) {
+            if (temp !== val) {
+                return true;
+            } else {
+                throw new Error("Equal")
+            }
+        }
+    };
+};
+
+ */

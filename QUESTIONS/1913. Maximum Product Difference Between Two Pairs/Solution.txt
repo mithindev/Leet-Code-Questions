@@ -1,0 +1,8 @@
+1913. Maximum Product Difference Between Two Pairs
+
+class Solution:
+    def maxProductDifference(self, arr: List[int]) -> int:
+        arr.sort()
+        n = len(arr)
+
+        return (arr[n-1] * arr[n - 2]) - (arr[0] * arr[1])

@@ -1,0 +1,52 @@
+661. Image Smoother
+
+class Solution:
+    def helper(self, grid, r, c, row, col):
+        ans = grid[r][c]
+        d = 1
+
+        if r - 1 >= 0:
+            ans += grid[r - 1][c]
+            d += 1
+
+        if r + 1 < row:
+            ans += grid[r + 1][c]
+            d += 1
+
+        if c - 1 >= 0:
+            ans += grid[r][c - 1]
+            d += 1
+
+        if c + 1 < col:
+            ans += grid[r][c + 1]
+            d += 1
+
+        if r - 1 >= 0 and c - 1 >= 0:
+            ans += grid[r - 1][c - 1]
+            d += 1
+
+        if r + 1 < row and c - 1 >= 0:
+            ans += grid[r + 1][c - 1]
+            d += 1
+
+        if r - 1 >= 0 and c + 1 < col:
+            ans += grid[r - 1][c + 1]
+            d += 1
+
+        if r + 1 < row and c + 1 < col:
+            ans += grid[r + 1][c + 1]
+            d += 1
+
+        return ans // d
+
+    def imageSmoother(self, img):
+        row = len(img)
+        col = len(img[0])
+
+        ans = [[0 for i in range(col)] for j in range(row)]
+
+        for r in range(row):
+            for c in range(col):
+                ans[r][c] = self.helper(img, r, c, row, col)
+
+        return ans

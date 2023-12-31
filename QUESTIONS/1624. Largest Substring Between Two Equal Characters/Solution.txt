@@ -1,0 +1,16 @@
+1624. Largest Substring Between Two Equal Characters
+
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        n = len(s) - 1
+        r = s[::-1]
+        ans = -1
+
+        for ch in s:
+            x = s.find(ch) + 1
+            y = n - r.find(ch)
+
+            if y - x > ans:
+                ans = y - x
+        
+        return ans

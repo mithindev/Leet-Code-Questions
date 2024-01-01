@@ -1,0 +1,23 @@
+455. Assign Cookies
+
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        if not g or not s:
+            return 0
+        
+        g.sort()
+        s.sort()
+        
+        i = 0
+        j = 0
+        ans = 0
+
+        while j < len(s) and i < len(g):
+            if s[j] >= g[i]:
+                ans += 1
+                j += 1
+                i += 1
+            else:
+                j += 1
+        
+        return ans

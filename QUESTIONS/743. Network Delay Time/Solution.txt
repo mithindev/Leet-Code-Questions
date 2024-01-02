@@ -1,0 +1,50 @@
+743. Network Delay Time
+
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        # GRAPH formation:-
+        graph = {}
+
+        for src in range(1, n + 1):
+            graph[src] = []
+
+        for item in times:
+            src = item[0]
+            graph[src].append(item[1:3])
+        
+        lst = set([k])
+        dist = defaultdict(lambda: inf)
+
+        dist[k] = 0
+        visited = set()
+
+        while lst:
+            minDist = inf
+            target = None
+
+            for src in lst:
+                if dist[src] < minDist:
+                    target = src
+                    minDist = dist[src]
+            
+            lst.remove(target)
+            visited.add(target) 
+
+            d = dist[target]
+
+            for item in graph[target]:
+                element = item[0]
+                tempDist = item[1]
+
+                newDist = d + tempDist
+
+                if newDist < dist[element]:
+                    dist[element] = newDist
+                
+                if element not in visited:
+                    lst.add(element)
+        
+        if len(visited) == n:
+            return max(dist.values())
+        else:
+            return -1

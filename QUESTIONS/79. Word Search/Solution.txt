@@ -1,0 +1,32 @@
+79. Word Search
+
+from typing import List
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        row = len(board)
+        col = len(board[0])
+
+        def dfs (board, r, c, row, col, word, ptr, visited):
+            if ptr == len(word):
+                return True
+            
+            if r < 0 or r >= row or c < 0 or c >= col or visited[r][c] == True or board[r][c] != word[ptr]:
+                return False
+            
+            visited[r][c] = True
+            res = dfs(board, r + 1, c, row, col, word, ptr + 1, visited) or dfs (board, r - 1, c, row, col, word, ptr + 1, visited) or dfs (board, r, c + 1, row, col, word, ptr + 1, visited) or dfs (board, r, c - 1, row, col, word, ptr + 1, visited)
+            
+            visited[r][c] = False
+            return res
+        
+        visited = [[False] * col for _ in range(row)]
+        
+        for r in range(row):
+            for c in range(col):
+                if (dfs (board, r, c, row, col, word, 0, visited)):
+                    return True
+        
+        return False
+
+        

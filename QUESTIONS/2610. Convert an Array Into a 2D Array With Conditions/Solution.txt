@@ -1,0 +1,31 @@
+from typing import List
+
+
+class Solution:
+    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+        data = {}
+        ans = []
+
+        for num in nums:
+            if num in data:
+                data[num] += 1
+            else:
+                data[num] = 1
+        
+        myKeys = list(data.keys())
+
+        while (myKeys):
+            temp = []
+            K = myKeys.copy()
+            for key in myKeys:
+                if data[key] <= 0:
+                    K.remove(key)
+                else:
+                    temp.append(key)
+                    data[key] -= 1
+            myKeys = K
+            if temp:
+                ans.append(temp)
+            print(data)
+        
+        return ans
